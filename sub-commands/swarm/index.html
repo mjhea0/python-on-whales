@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>docker swarm - Python on whales</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Python on whales</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../docker_client/" class="nav-link">Docker client</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sub-commands <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../buildx/" class="dropdown-item">docker buildx</a>
+</li>
+                                    
+<li>
+    <a href="../compose/" class="dropdown-item">docker compose</a>
+</li>
+                                    
+<li>
+    <a href="../config/" class="dropdown-item">docker config</a>
+</li>
+                                    
+<li>
+    <a href="../container/" class="dropdown-item">docker container</a>
+</li>
+                                    
+<li>
+    <a href="../context/" class="dropdown-item">docker context</a>
+</li>
+                                    
+<li>
+    <a href="../image/" class="dropdown-item">docker image</a>
+</li>
+                                    
+<li>
+    <a href="../manifest/" class="dropdown-item">docker manifest</a>
+</li>
+                                    
+<li>
+    <a href="../network/" class="dropdown-item">docker network</a>
+</li>
+                                    
+<li>
+    <a href="../node/" class="dropdown-item">docker node</a>
+</li>
+                                    
+<li>
+    <a href="../plugin/" class="dropdown-item">docker plugin</a>
+</li>
+                                    
+<li>
+    <a href="../secret/" class="dropdown-item">docker secret</a>
+</li>
+                                    
+<li>
+    <a href="../service/" class="dropdown-item">docker service</a>
+</li>
+                                    
+<li>
+    <a href="../stack/" class="dropdown-item">docker stack</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">docker swarm</a>
+</li>
+                                    
+<li>
+    <a href="../system/" class="dropdown-item">docker system</a>
+</li>
+                                    
+<li>
+    <a href="../task/" class="dropdown-item">docker task</a>
+</li>
+                                    
+<li>
+    <a href="../trust/" class="dropdown-item">docker trust</a>
+</li>
+                                    
+<li>
+    <a href="../volume/" class="dropdown-item">docker volume</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Docker objects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../docker_objects/builders/" class="dropdown-item">Builders</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/configs/" class="dropdown-item">Configs</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/containers/" class="dropdown-item">Containers</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/networks/" class="dropdown-item">Networks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/nodes/" class="dropdown-item">Nodes</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/plugins/" class="dropdown-item">Plugins</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/services/" class="dropdown-item">Services</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/stacks/" class="dropdown-item">Stacks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/tasks/" class="dropdown-item">Tasks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/volumes/" class="dropdown-item">Volumes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../user_guide/docker_run/" class="dropdown-item">docker.run() guide</a>
+</li>
+                                    
+<li>
+    <a href="../../user_guide/generic_resources/" class="dropdown-item">Swarm generic resources</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../stack/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../system/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#ca" class="nav-link">ca</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#init" class="nav-link">init</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#join" class="nav-link">join</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#join_token" class="nav-link">join_token</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#leave" class="nav-link">leave</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#unlock" class="nav-link">unlock</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#unlock_key" class="nav-link">unlock_key</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#update" class="nav-link">update</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="ca">ca</h2>
+<pre><code class="python">docker.swarm.ca(
+    ca_certificate=None, ca_key=None, certificate_expiry=None, detach=False, external_ca=None, rotate=False
+)
+</code></pre>
+
+<p>Get and rotate the root CA</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>ca_certificate</strong> <code>Optional[Union[str, pathlib.Path]]</code>: Path to the PEM-formatted root CA certificate
+    to use for the new cluster</li>
+<li><strong>ca_key</strong> <code>Optional[Union[str, pathlib.Path]]</code>: Path to the PEM-formatted root CA key to use
+    for the new cluster</li>
+<li><strong>certificate_expiry</strong> <code>Optional[Union[int, datetime.timedelta]]</code>: Validity period for node certificates</li>
+<li><strong>detach</strong> <code>bool</code>: Exit immediately instead of waiting for the root rotation
+    to converge. The function will return <code>None</code>.</li>
+<li><strong>external_ca</strong> <code>Optional[str]</code>: Specifications of one or more certificate signing endpoints</li>
+<li><strong>rotate</strong> <code>bool</code>: Rotate the swarm CA - if no certificate or key are provided,
+    new ones will be generated.</li>
+</ul>
+<hr />
+<h2 id="init">init</h2>
+<pre><code class="python">docker.swarm.init(
+    advertise_address=None,
+    autolock=False,
+    availability=&quot;active&quot;,
+    data_path_address=None,
+    data_path_port=None,
+    listen_address=None,
+)
+</code></pre>
+
+<p>Initialize a Swarm.</p>
+<p>If you need the token to join the new swarm from another node,
+use the <a href="#join_token"><code>docker.swarm.join_token</code></a> function.</p>
+<p>A example of how to initialize the whole swarm without leaving the manager
+if the manager has ssh access to the workers:</p>
+<pre><code class="python">from python_on_whales import docker, DockerClient
+
+worker_docker = DockerClient(host=&quot;ssh://worker_linux_user@worker_hostname&quot;)
+# Here the docker variable is connected to the local daemon
+# worker_docker is a connected to the Docker daemon of the
+# worker through ssh, useful to control it without login to the machine
+# manually.
+docker.swarm.init()
+my_token = docker.swarm.join_token(&quot;worker&quot;)  # you can set manager too
+worker_docker.swarm.join(&quot;manager_hostname:2377&quot;, token=my_token)
+</code></pre>
+
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>advertise_address</strong> <code>Optional[str]</code>: Advertised address (format: <code>&lt;ip|interface&gt;[:port]</code>)</li>
+<li><strong>autolock</strong> <code>bool</code>: Enable manager autolocking (requiring an unlock key to start a
+    stopped manager)</li>
+<li><strong>availability</strong> <code>str</code>: Availability of the node ("active"|"pause"|"drain")</li>
+<li><strong>data_path_address</strong> <code>Optional[str]</code>: Address or interface to use for data path
+    traffic (format is <code>&lt;ip|interface&gt;</code>)</li>
+</ul>
+<hr />
+<h2 id="join">join</h2>
+<pre><code class="python">docker.swarm.join(
+    manager_address,
+    advertise_address=None,
+    availability=&quot;active&quot;,
+    data_path_address=None,
+    listen_address=None,
+    token=None,
+)
+</code></pre>
+
+<p>Joins a swarm</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>manager_address</strong> <code>str</code>: The address of the swarm manager in the format <code>"{ip}:{port}"</code></li>
+<li><strong>advertise_address</strong> <code>Optional[str]</code>: Advertised address (format: <ip|interface>[:port])</li>
+<li><strong>availability</strong> <code>str</code>: Availability of the node
+    (<code>"active"</code>|<code>"pause"</code>|<code>"drain"</code>)</li>
+<li><strong>data_path_address</strong> <code>Optional[str]</code>: Address or interface to use for data
+    path traffic (format: <ip|interface>)</li>
+<li><strong>listen-address</strong>: Listen address (format: <ip|interface>[:port])
+    (default 0.0.0.0:2377)</li>
+<li><strong>token</strong> <code>Optional[str]</code>: Token for entry into the swarm, will determine if
+    the node enters the swarm as a manager or a worker.</li>
+</ul>
+<hr />
+<h2 id="join_token">join_token</h2>
+<pre><code class="python">docker.swarm.join_token(node_type, rotate=False)
+</code></pre>
+
+<p>Obtains a token to join the swarm</p>
+<p>This token can then be used
+with <code>docker.swarm.join("manager:2377", token=my_token)</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>node_type</strong> <code>str</code>: <code>"manager"</code> or <code>"worker"</code></li>
+<li><strong>rotate</strong> <code>bool</code>: Rotate join token</li>
+</ul>
+<hr />
+<h2 id="leave">leave</h2>
+<pre><code class="python">docker.swarm.leave(force=False)
+</code></pre>
+
+<p>Leave the swarm</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>force</strong> <code>bool</code>: Force this node to leave the swarm, ignoring warnings</li>
+</ul>
+<hr />
+<h2 id="unlock">unlock</h2>
+<pre><code class="python">docker.swarm.unlock(key)
+</code></pre>
+
+<p>Unlock a swarm after the <code>--autolock</code> parameter was used and
+the daemon restarted.</p>
+<p><strong>Arguments:</strong></p>
+<p>key: The key to unlock the swarm. The key can be obtained on any manager
+    with <code>docker.swarm.unlock_key()</code>.</p>
+<hr />
+<h2 id="unlock_key">unlock_key</h2>
+<pre><code class="python">docker.swarm.unlock_key(rotate=False)
+</code></pre>
+
+<p>Gives you the key needed to unlock the swarm after a manager daemon reboot.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>rotate</strong> <code>bool</code>: Rotate the unlock key.</li>
+</ul>
+<hr />
+<h2 id="update">update</h2>
+<pre><code class="python">docker.swarm.update(
+    autolock=None,
+    cert_expiry=None,
+    dispatcher_heartbeat=None,
+    external_ca=None,
+    max_snapshots=None,
+    snapshot_interval=None,
+    task_history_limit=None,
+)
+</code></pre>
+
+<p>Update the swarm configuration</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>autolock</strong> <code>Optional[bool]</code>: Change manager autolocking setting</li>
+<li><strong>cert_expiry</strong> <code>Optional[datetime.timedelta]</code>: Validity period for node certificates, default
+    is <code>datetime.timedelta(days=90)</code>. If <code>int</code>, it's a number of seconds.</li>
+<li><strong>dispatcher_heartbeat</strong> <code>Optional[datetime.timedelta]</code>: Dispatcher heartbeat period.</li>
+<li><strong>external_ca</strong> <code>Optional[str]</code>: Specifications of one or more certificate signing endpoints</li>
+<li><strong>max_snapshots</strong> <code>Optional[int]</code>: Number of additional Raft snapshots to retain</li>
+<li><strong>snapshot_interval</strong> <code>Optional[int]</code>: Number of log entries between Raft snapshots (default 10000)</li>
+<li><strong>task_history_limit</strong> <code>Optional[int]</code>: Task history retention limit (default 5)</li>
+</ul>
+<hr /></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

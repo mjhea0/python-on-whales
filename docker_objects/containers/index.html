@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Containers - Python on whales</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Python on whales</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../docker_client/" class="nav-link">Docker client</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sub-commands <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../sub-commands/buildx/" class="dropdown-item">docker buildx</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/compose/" class="dropdown-item">docker compose</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/config/" class="dropdown-item">docker config</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/container/" class="dropdown-item">docker container</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/context/" class="dropdown-item">docker context</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/image/" class="dropdown-item">docker image</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/manifest/" class="dropdown-item">docker manifest</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/network/" class="dropdown-item">docker network</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/node/" class="dropdown-item">docker node</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/plugin/" class="dropdown-item">docker plugin</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/secret/" class="dropdown-item">docker secret</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/service/" class="dropdown-item">docker service</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/stack/" class="dropdown-item">docker stack</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/swarm/" class="dropdown-item">docker swarm</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/system/" class="dropdown-item">docker system</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/task/" class="dropdown-item">docker task</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/trust/" class="dropdown-item">docker trust</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/volume/" class="dropdown-item">docker volume</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Docker objects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../builders/" class="dropdown-item">Builders</a>
+</li>
+                                    
+<li>
+    <a href="../configs/" class="dropdown-item">Configs</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Containers</a>
+</li>
+                                    
+<li>
+    <a href="../images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="../networks/" class="dropdown-item">Networks</a>
+</li>
+                                    
+<li>
+    <a href="../nodes/" class="dropdown-item">Nodes</a>
+</li>
+                                    
+<li>
+    <a href="../plugins/" class="dropdown-item">Plugins</a>
+</li>
+                                    
+<li>
+    <a href="../services/" class="dropdown-item">Services</a>
+</li>
+                                    
+<li>
+    <a href="../stacks/" class="dropdown-item">Stacks</a>
+</li>
+                                    
+<li>
+    <a href="../tasks/" class="dropdown-item">Tasks</a>
+</li>
+                                    
+<li>
+    <a href="../volumes/" class="dropdown-item">Volumes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../user_guide/docker_run/" class="dropdown-item">docker.run() guide</a>
+</li>
+                                    
+<li>
+    <a href="../../user_guide/generic_resources/" class="dropdown-item">Swarm generic resources</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../configs/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../images/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#docker-containers" class="nav-link">Docker containers</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#attributes" class="nav-link">Attributes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#methods" class="nav-link">Methods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#commit" class="nav-link">commit</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#copy_from" class="nav-link">copy_from</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#copy_to" class="nav-link">copy_to</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#diff" class="nav-link">diff</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#execute" class="nav-link">execute</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#export" class="nav-link">export</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#kill" class="nav-link">kill</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#logs" class="nav-link">logs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pause" class="nav-link">pause</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#reload" class="nav-link">reload</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#remove" class="nav-link">remove</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#rename" class="nav-link">rename</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#restart" class="nav-link">restart</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#start" class="nav-link">start</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#stop" class="nav-link">stop</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#unpause" class="nav-link">unpause</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="docker-containers">Docker containers</h1>
+<p>Don't use the constructor directly. Instead use </p>
+<pre><code class="python">from python_on_whales import docker
+
+my_container = docker.container.inspect(&quot;my-container-name&quot;)
+
+# for example:
+if my_container.state.running:
+    my_container.kill()
+
+</code></pre>
+
+<p>For type hints, use this</p>
+<pre><code class="python">from python_on_whales import Container
+
+def print_dodo(container: Container):
+    print(container.execute([&quot;echo&quot;, &quot;dodo&quot;]))
+</code></pre>
+
+<h2 id="attributes">Attributes</h2>
+<p>It attributes are the same that you get with the command line:
+<code>docker container inspect ...</code></p>
+<p>If you want to know the exact structure, you can go to the 
+<a href="https://docs.docker.com/engine/api/v1.40/#operation/ContainerInspect"><code>docker container inspect</code> reference page</a>
+and click on "200 no error".
+An example is worth many lines of descriptions.</p>
+<pre><code>In [1]: from python_on_whales import docker
+
+In [2]: container = docker.run(&quot;ubuntu&quot;, [&quot;sleep&quot;, &quot;infinity&quot;], detach=True)
+
+In [4]: def super_print(obj):
+   ...:     print(f&quot;type={type(obj)}, value={obj}&quot;)
+   ...:
+
+In [4]: super_print(container.id)
+type = &lt;class 'str'&gt;, value = e8dc09c708189b58ff571db0fb27cf33bfcc875527123fc098dd87776a2c9a06
+
+In [5]: super_print(container.created)
+type = &lt;class 'datetime.datetime'&gt;, value = 2021-03-18 15:48:23.605485+00:00
+
+In [6]: super_print(container.path)
+type = &lt;class 'str'&gt;, value = sleep
+
+In [7]: super_print(container.args)
+type = &lt;class 'list'&gt;, value = ['infinity']
+
+In [8]: super_print(container.state.status)
+type = &lt;class 'str'&gt;, value = running
+
+In [9]: super_print(container.state.running)
+type = &lt;class 'bool'&gt;, value = True
+
+In [10]: super_print(container.state.paused)
+type = &lt;class 'bool'&gt;, value = False
+
+In [11]: super_print(container.state.restarting)
+type = &lt;class 'bool'&gt;, value = False
+
+In [12]: super_print(container.state.oom_killed)
+type = &lt;class 'bool'&gt;, value = False
+
+In [13]: super_print(container.state.dead)
+type = &lt;class 'bool'&gt;, value = False
+
+In [14]: super_print(container.state.pid)
+type = &lt;class 'int'&gt;, value = 2617
+
+In [15]: super_print(container.state.exit_code)
+type = &lt;class 'int'&gt;, value = 0
+
+In [16]: super_print(container.state.error)
+type = &lt;class 'str'&gt;, value = 
+
+In [17]: super_print(container.state.started_at)
+type = &lt;class 'datetime.datetime'&gt;, value = 2021-03-18 15:48:23.977722+00:00
+
+In [18]: super_print(container.state.finished_at)
+type = &lt;class 'datetime.datetime'&gt;, value = 0001-01-01 00:00:00+00:00
+
+In [19]: super_print(container.state.health)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [20]: super_print(container.image)
+type = &lt;class 'str'&gt;, value = sha256:4dd97cefde62cf2d6bcfd8f2c0300a24fbcddbe0ebcd577cc8b420c29106869a
+
+In [21]: super_print(container.resolv_conf_path)
+type = &lt;class 'str'&gt;, value = /var/lib/docker/containers/e8dc09c708189b58ff571db0fb27cf33bfcc875527123fc098dd87776a2c9a06/resolv.conf
+
+In [22]: super_print(container.hostname_path)
+type = &lt;class 'pathlib.PosixPath'&gt;, value = /var/lib/docker/containers/e8dc09c708189b58ff571db0fb27cf33bfcc875527123fc098dd87776a2c9a06/hostname
+
+In [23]: super_print(container.hosts_path)
+type = &lt;class 'pathlib.PosixPath'&gt;, value = /var/lib/docker/containers/e8dc09c708189b58ff571db0fb27cf33bfcc875527123fc098dd87776a2c9a06/hosts
+
+In [24]: super_print(container.log_path)
+type = &lt;class 'pathlib.PosixPath'&gt;, value = /var/lib/docker/containers/e8dc09c708189b58ff571db0fb27cf33bfcc875527123fc098dd87776a2c9a06/e8dc09c708189b58ff571db0fb27cf33bfcc875527123fc098dd87776a2c9a06-json.log
+
+In [25]: super_print(container.node)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [26]: super_print(container.name)
+type = &lt;class 'str'&gt;, value = sharp_nobel
+
+In [27]: super_print(container.restart_count)
+type = &lt;class 'int'&gt;, value = 0
+
+In [28]: super_print(container.driver)
+type = &lt;class 'str'&gt;, value = overlay2
+
+In [29]: super_print(container.platform)
+type = &lt;class 'str'&gt;, value = linux
+
+In [30]: super_print(container.mount_label)
+type = &lt;class 'str'&gt;, value = 
+
+In [31]: super_print(container.process_label)
+type = &lt;class 'str'&gt;, value = 
+
+In [32]: super_print(container.app_armor_profile)
+type = &lt;class 'str'&gt;, value = docker-default
+
+In [33]: super_print(container.exec_ids)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [34]: super_print(container.host_config.cpu_shares)
+type = &lt;class 'int'&gt;, value = 0
+
+In [35]: super_print(container.host_config.memory)
+type = &lt;class 'int'&gt;, value = 0
+
+In [36]: super_print(container.host_config.cgroup_parent)
+type = &lt;class 'pathlib.PosixPath'&gt;, value = .
+
+In [37]: super_print(container.host_config.blkio_weight)
+type = &lt;class 'int'&gt;, value = 0
+
+In [38]: super_print(container.host_config.blkio_weight_device)
+type = &lt;class 'list'&gt;, value = []
+
+In [39]: super_print(container.host_config.blkio_device_read_bps)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [40]: super_print(container.host_config.blkio_device_write_bps)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [41]: super_print(container.host_config.blkio_device_read_iops)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [42]: super_print(container.host_config.blkio_device_write_iops)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [43]: super_print(container.host_config.cpu_period)
+type = &lt;class 'int'&gt;, value = 0
+
+In [44]: super_print(container.host_config.cpu_quota)
+type = &lt;class 'int'&gt;, value = 0
+
+In [45]: super_print(container.host_config.cpu_realtime_period)
+type = &lt;class 'int'&gt;, value = 0
+
+In [46]: super_print(container.host_config.cpu_realtime_runtime)
+type = &lt;class 'int'&gt;, value = 0
+
+In [47]: super_print(container.host_config.cpuset_cpus)
+type = &lt;class 'str'&gt;, value = 
+
+In [48]: super_print(container.host_config.cpuset_mems)
+type = &lt;class 'str'&gt;, value = 
+
+In [49]: super_print(container.host_config.devices)
+type = &lt;class 'list'&gt;, value = []
+
+In [50]: super_print(container.host_config.device_cgroup_rules)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [51]: super_print(container.host_config.device_requests)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [52]: super_print(container.host_config.kernel_memory)
+type = &lt;class 'int'&gt;, value = 0
+
+In [53]: super_print(container.host_config.kernel_memory_tcp)
+type = &lt;class 'int'&gt;, value = 0
+
+In [54]: super_print(container.host_config.memory_reservation)
+type = &lt;class 'int'&gt;, value = 0
+
+In [55]: super_print(container.host_config.memory_swap)
+type = &lt;class 'int'&gt;, value = 0
+
+In [56]: super_print(container.host_config.memory_swappiness)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [57]: super_print(container.host_config.nano_cpus)
+type = &lt;class 'int'&gt;, value = 0
+
+In [58]: super_print(container.host_config.oom_kill_disable)
+type = &lt;class 'bool'&gt;, value = False
+
+In [59]: super_print(container.host_config.init)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [60]: super_print(container.host_config.pids_limit)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [61]: super_print(container.host_config.ulimits)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [62]: super_print(container.host_config.cpu_count)
+type = &lt;class 'int'&gt;, value = 0
+
+In [63]: super_print(container.host_config.cpu_percent)
+type = &lt;class 'int'&gt;, value = 0
+
+In [64]: super_print(container.host_config.binds)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [65]: super_print(container.host_config.container_id_file)
+type = &lt;class 'pathlib.PosixPath'&gt;, value = .
+
+In [66]: super_print(container.host_config.log_config.type)
+type = &lt;class 'str'&gt;, value = json-file
+
+In [67]: super_print(container.host_config.log_config.config)
+type = &lt;class 'dict'&gt;, value = {}
+
+In [68]: super_print(container.host_config.network_mode)
+type = &lt;class 'str'&gt;, value = default
+
+In [69]: super_print(container.host_config.port_bindings)
+type = &lt;class 'dict'&gt;, value = {}
+
+In [70]: super_print(container.host_config.restart_policy.name)
+type = &lt;class 'str'&gt;, value = no
+
+In [71]: super_print(container.host_config.restart_policy.maximum_retry_count)
+type = &lt;class 'int'&gt;, value = 0
+
+In [72]: super_print(container.host_config.auto_remove)
+type = &lt;class 'bool'&gt;, value = False
+
+In [73]: super_print(container.host_config.volume_driver)
+type = &lt;class 'str'&gt;, value = 
+
+In [74]: super_print(container.host_config.volumes_from)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [75]: super_print(container.host_config.mounts)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [76]: super_print(container.host_config.capabilities)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [77]: super_print(container.host_config.cap_add)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [78]: super_print(container.host_config.cap_drop)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [79]: super_print(container.host_config.dns)
+type = &lt;class 'list'&gt;, value = []
+
+In [80]: super_print(container.host_config.dns_options)
+type = &lt;class 'list'&gt;, value = []
+
+In [81]: super_print(container.host_config.dns_search)
+type = &lt;class 'list'&gt;, value = []
+
+In [82]: super_print(container.host_config.extra_hosts)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [83]: super_print(container.host_config.group_add)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [84]: super_print(container.host_config.ipc_mode)
+type = &lt;class 'str'&gt;, value = private
+
+In [85]: super_print(container.host_config.cgroup)
+type = &lt;class 'str'&gt;, value = 
+
+In [86]: super_print(container.host_config.links)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [87]: super_print(container.host_config.oom_score_adj)
+type = &lt;class 'int'&gt;, value = 0
+
+In [88]: super_print(container.host_config.pid_mode)
+type = &lt;class 'str'&gt;, value = 
+
+In [89]: super_print(container.host_config.privileged)
+type = &lt;class 'bool'&gt;, value = False
+
+In [90]: super_print(container.host_config.publish_all_ports)
+type = &lt;class 'bool'&gt;, value = False
+
+In [91]: super_print(container.host_config.readonly_rootfs)
+type = &lt;class 'bool'&gt;, value = False
+
+In [92]: super_print(container.host_config.security_opt)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [93]: super_print(container.host_config.storage_opt)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [94]: super_print(container.host_config.tmpfs)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [95]: super_print(container.host_config.uts_mode)
+type = &lt;class 'str'&gt;, value = 
+
+In [96]: super_print(container.host_config.userns_mode)
+type = &lt;class 'str'&gt;, value = 
+
+In [97]: super_print(container.host_config.shm_size)
+type = &lt;class 'int'&gt;, value = 67108864
+
+In [98]: super_print(container.host_config.sysctls)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [99]: super_print(container.host_config.runtime)
+type = &lt;class 'str'&gt;, value = runc
+
+In [100]: super_print(container.host_config.console_size)
+type = &lt;class 'tuple'&gt;, value = (0, 0)
+
+In [101]: super_print(container.host_config.isolation)
+type = &lt;class 'str'&gt;, value = 
+
+In [102]: super_print(container.host_config.masked_paths)
+type = &lt;class 'list'&gt;, value = [PosixPath('/proc/asound'), PosixPath('/proc/acpi'), PosixPath('/proc/kcore'), PosixPath('/proc/keys'), PosixPath('/proc/latency_stats'), PosixPath('/proc/timer_list'), PosixPath('/proc/timer_stats'), PosixPath('/proc/sched_debug'), PosixPath('/proc/scsi'), PosixPath('/sys/firmware')]
+
+In [103]: super_print(container.host_config.readonly_paths)
+type = &lt;class 'list'&gt;, value = [PosixPath('/proc/bus'), PosixPath('/proc/fs'), PosixPath('/proc/irq'), PosixPath('/proc/sys'), PosixPath('/proc/sysrq-trigger')]
+
+In [104]: super_print(container.graph_driver.name)
+type = &lt;class 'str'&gt;, value = overlay2
+
+In [105]: super_print(container.graph_driver.data)
+type = &lt;class 'dict'&gt;, value = {'LowerDir': '/var/lib/docker/overlay2/48fb4a59009622a76208a8013cdc6843582bfd371fbf869d91732d25a3f82b01-init/diff:/var/lib/docker/overlay2/7d3add14e255006ddd0446f4841e74a8b0d92e3f8e615425f7142f81a525605b/diff:/var/lib/docker/overlay2/232b2d110671f60a648cf32091e3ad09580b0fb9d7c929cf7eccd816df83fdb5/diff:/var/lib/docker/overlay2/4fb0b4d0f7e7e2b35f8631dcb719a05bc823e36b604a8599da9c23016c0c51e9/diff', 'MergedDir': '/var/lib/docker/overlay2/48fb4a59009622a76208a8013cdc6843582bfd371fbf869d91732d25a3f82b01/merged', 'UpperDir': '/var/lib/docker/overlay2/48fb4a59009622a76208a8013cdc6843582bfd371fbf869d91732d25a3f82b01/diff', 'WorkDir': '/var/lib/docker/overlay2/48fb4a59009622a76208a8013cdc6843582bfd371fbf869d91732d25a3f82b01/work'}
+
+In [106]: super_print(container.size_rw)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [107]: super_print(container.size_root_fs)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [108]: super_print(container.mounts)
+type = &lt;class 'list'&gt;, value = []
+
+In [109]: super_print(container.config.hostname)
+type = &lt;class 'str'&gt;, value = e8dc09c70818
+
+In [110]: super_print(container.config.domainname)
+type = &lt;class 'str'&gt;, value = 
+
+In [111]: super_print(container.config.user)
+type = &lt;class 'str'&gt;, value = 
+
+In [112]: super_print(container.config.attach_stdin)
+type = &lt;class 'bool'&gt;, value = False
+
+In [113]: super_print(container.config.attach_stdout)
+type = &lt;class 'bool'&gt;, value = False
+
+In [114]: super_print(container.config.attach_stderr)
+type = &lt;class 'bool'&gt;, value = False
+
+In [115]: super_print(container.config.exposed_ports)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [116]: super_print(container.config.tty)
+type = &lt;class 'bool'&gt;, value = False
+
+In [117]: super_print(container.config.open_stdin)
+type = &lt;class 'bool'&gt;, value = False
+
+In [118]: super_print(container.config.stdin_once)
+type = &lt;class 'bool'&gt;, value = False
+
+In [119]: super_print(container.config.env)
+type = &lt;class 'list'&gt;, value = ['PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin']
+
+In [120]: super_print(container.config.cmd)
+type = &lt;class 'list'&gt;, value = ['sleep', 'infinity']
+
+In [121]: super_print(container.config.healthcheck)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [122]: super_print(container.config.args_escaped)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [123]: super_print(container.config.image)
+type = &lt;class 'str'&gt;, value = ubuntu
+
+In [124]: super_print(container.config.volumes)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [125]: super_print(container.config.working_dir)
+type = &lt;class 'pathlib.PosixPath'&gt;, value = .
+
+In [126]: super_print(container.config.entrypoint)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [127]: super_print(container.config.network_disabled)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [128]: super_print(container.config.mac_address)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [129]: super_print(container.config.on_build)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [130]: super_print(container.config.labels)
+type = &lt;class 'dict'&gt;, value = {}
+
+In [131]: super_print(container.config.stop_signal)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [132]: super_print(container.config.stop_timeout)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [133]: super_print(container.config.shell)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [134]: super_print(container.network_settings.bridge)
+type = &lt;class 'str'&gt;, value = 
+
+In [135]: super_print(container.network_settings.sandbox_id)
+type = &lt;class 'str'&gt;, value = 17f7a0eee14547f69099de28b4378f9cf095afed078cda40bb2b7f8c4798b8ab
+
+In [136]: super_print(container.network_settings.hairpin_mode)
+type = &lt;class 'bool'&gt;, value = False
+
+In [137]: super_print(container.network_settings.link_local_ipv6_address)
+type = &lt;class 'str'&gt;, value = 
+
+In [138]: super_print(container.network_settings.link_local_ipv6_prefix_lenght)
+type = &lt;class 'int'&gt;, value = 0
+
+In [139]: super_print(container.network_settings.ports)
+type = &lt;class 'dict'&gt;, value = {}
+
+In [140]: super_print(container.network_settings.sandbox_key)
+type = &lt;class 'pathlib.PosixPath'&gt;, value = /var/run/docker/netns/17f7a0eee145
+
+In [141]: super_print(container.network_settings.secondary_ip_addresses)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [142]: super_print(container.network_settings.secondary_ipv6_addresses)
+type = &lt;class 'NoneType'&gt;, value = None
+
+In [143]: super_print(container.network_settings.endpoint_id)
+type = &lt;class 'str'&gt;, value = 94e7d1e2b7fe26bc7f9c9827581be0109efb26a09c1542939570b883a93bbd91
+
+In [144]: super_print(container.network_settings.gateway)
+type = &lt;class 'str'&gt;, value = 172.17.0.1
+
+In [145]: super_print(container.network_settings.global_ipv6_address)
+type = &lt;class 'str'&gt;, value = 
+
+In [146]: super_print(container.network_settings.global_ipv6_prefix_lenght)
+type = &lt;class 'int'&gt;, value = 0
+
+In [147]: super_print(container.network_settings.ip_adress)
+type = &lt;class 'str'&gt;, value = 172.17.0.2
+
+In [148]: super_print(container.network_settings.ip_prefix_lenght)
+type = &lt;class 'int'&gt;, value = 16
+
+In [149]: super_print(container.network_settings.ipv6_gateway)
+type = &lt;class 'str'&gt;, value = 
+
+In [150]: super_print(container.network_settings.mac_address)
+type = &lt;class 'str'&gt;, value = 02:42:ac:11:00:02
+
+In [151]: super_print(container.network_settings.networks)
+type = &lt;class 'dict'&gt;, value = {'bridge': NetworkInspectResult(ipam_config=None, links=None, aliases=None, network_id='3c619d729558c388712eb7bc79d135a395bf97bb0926365d913d217aed855b04', endpoint_id='94e7d1e2b7fe26bc7f9c9827581be0109efb26a09c1542939570b883a93bbd91', gateway='172.17.0.1', ip_address='172.17.0.2', ip_prefix_lenght=16, ipv6_gateway='', global_ipv6_address='', global_ipv6_prefix_lenght=0, mac_address='02:42:ac:11:00:02', driver_options=None)}
+
+</code></pre>
+
+<h2 id="methods">Methods</h2>
+<h2 id="commit">commit</h2>
+<pre><code class="python">Container.commit(tag=None, author=None, message=None, pause=True)
+</code></pre>
+
+<p>Create a new image from the container's changes.</p>
+<p>Alias: <code>docker.commit(...)</code></p>
+<p>See the <a href="../../sub-commands/container/"><code>docker.container.commit</code></a> command for
+information about the arguments.</p>
+<hr />
+<h2 id="copy_from">copy_from</h2>
+<pre><code class="python">Container.copy_from(container_path, local_path)
+</code></pre>
+
+<hr />
+<h2 id="copy_to">copy_to</h2>
+<pre><code class="python">Container.copy_to(local_path, container_path)
+</code></pre>
+
+<hr />
+<h2 id="diff">diff</h2>
+<pre><code class="python">Container.diff()
+</code></pre>
+
+<p>Returns the diff of this container filesystem.</p>
+<p>See the <a href="../../sub-commands/container/"><code>docker.container.diff</code></a> command for
+information about the arguments.</p>
+<hr />
+<h2 id="execute">execute</h2>
+<pre><code class="python">Container.execute(command, detach=False)
+</code></pre>
+
+<p>Execute a command in this container</p>
+<p>See the <a href="../../sub-commands/container/#execute"><code>docker.container.execute</code></a>
+command for information about the arguments.</p>
+<hr />
+<h2 id="export">export</h2>
+<pre><code class="python">Container.export(output)
+</code></pre>
+
+<p>Export this container filesystem.</p>
+<p>See the <a href="../../sub-commands/container/"><code>docker.container.export</code></a> command for
+information about the arguments.</p>
+<hr />
+<h2 id="kill">kill</h2>
+<pre><code class="python">Container.kill(signal=None)
+</code></pre>
+
+<p>Kill this container</p>
+<p>See the <a href="../../sub-commands/container/#kill"><code>docker.container.kill</code></a> command for
+information about the arguments.</p>
+<hr />
+<h2 id="logs">logs</h2>
+<pre><code class="python">Container.logs(details=False, since=None, tail=None, timestamps=False, until=None)
+</code></pre>
+
+<p>Returns the logs of the container</p>
+<p>See the <a href="../../sub-commands/container/#logs"><code>docker.container.logs</code></a> command for
+information about the arguments.</p>
+<hr />
+<h2 id="pause">pause</h2>
+<pre><code class="python">Container.pause()
+</code></pre>
+
+<p>Pause this container.</p>
+<p>See the <a href="../../sub-commands/container/#pause"><code>docker.container.pause</code></a> command for
+information about the arguments.</p>
+<hr />
+<h2 id="reload">reload</h2>
+<pre><code class="python">Container.reload()
+</code></pre>
+
+<hr />
+<h2 id="remove">remove</h2>
+<pre><code class="python">Container.remove(force=False, volumes=False)
+</code></pre>
+
+<p>Remove this container.</p>
+<p>See the <a href="../../sub-commands/container/#remove"><code>docker.container.remove</code></a> command for
+information about the arguments.</p>
+<hr />
+<h2 id="rename">rename</h2>
+<pre><code class="python">Container.rename(new_name)
+</code></pre>
+
+<p>Rename this container</p>
+<p>See the <a href="../../sub-commands/container/#rename"><code>docker.container.rename</code></a> command for
+information about the arguments.</p>
+<hr />
+<h2 id="restart">restart</h2>
+<pre><code class="python">Container.restart(time=None)
+</code></pre>
+
+<p>Restarts this container.</p>
+<p>See the <a href="../../sub-commands/container/#restart"><code>docker.container.restart</code></a> command for
+information about the arguments.</p>
+<hr />
+<h2 id="start">start</h2>
+<pre><code class="python">Container.start(attach=False, stream=False)
+</code></pre>
+
+<p>Starts this container.</p>
+<p>See the <a href="../../sub-commands/container/#start"><code>docker.container.start</code></a> command for
+information about the arguments.</p>
+<hr />
+<h2 id="stop">stop</h2>
+<pre><code class="python">Container.stop(time=None)
+</code></pre>
+
+<p>Stops this container.</p>
+<p>See the <a href="../../sub-commands/container/#stop"><code>docker.container.stop</code></a> command for
+information about the arguments.</p>
+<hr />
+<h2 id="unpause">unpause</h2>
+<pre><code class="python">Container.unpause()
+</code></pre>
+
+<p>Unpause the container</p>
+<p>See the <a href="../../sub-commands/container/#unpause"><code>docker.container.unpause</code></a> command for
+information about the arguments.</p>
+<hr /></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

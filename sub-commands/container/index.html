@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>docker container - Python on whales</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Python on whales</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../docker_client/" class="nav-link">Docker client</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sub-commands <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../buildx/" class="dropdown-item">docker buildx</a>
+</li>
+                                    
+<li>
+    <a href="../compose/" class="dropdown-item">docker compose</a>
+</li>
+                                    
+<li>
+    <a href="../config/" class="dropdown-item">docker config</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">docker container</a>
+</li>
+                                    
+<li>
+    <a href="../context/" class="dropdown-item">docker context</a>
+</li>
+                                    
+<li>
+    <a href="../image/" class="dropdown-item">docker image</a>
+</li>
+                                    
+<li>
+    <a href="../manifest/" class="dropdown-item">docker manifest</a>
+</li>
+                                    
+<li>
+    <a href="../network/" class="dropdown-item">docker network</a>
+</li>
+                                    
+<li>
+    <a href="../node/" class="dropdown-item">docker node</a>
+</li>
+                                    
+<li>
+    <a href="../plugin/" class="dropdown-item">docker plugin</a>
+</li>
+                                    
+<li>
+    <a href="../secret/" class="dropdown-item">docker secret</a>
+</li>
+                                    
+<li>
+    <a href="../service/" class="dropdown-item">docker service</a>
+</li>
+                                    
+<li>
+    <a href="../stack/" class="dropdown-item">docker stack</a>
+</li>
+                                    
+<li>
+    <a href="../swarm/" class="dropdown-item">docker swarm</a>
+</li>
+                                    
+<li>
+    <a href="../system/" class="dropdown-item">docker system</a>
+</li>
+                                    
+<li>
+    <a href="../task/" class="dropdown-item">docker task</a>
+</li>
+                                    
+<li>
+    <a href="../trust/" class="dropdown-item">docker trust</a>
+</li>
+                                    
+<li>
+    <a href="../volume/" class="dropdown-item">docker volume</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Docker objects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../docker_objects/builders/" class="dropdown-item">Builders</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/configs/" class="dropdown-item">Configs</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/containers/" class="dropdown-item">Containers</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/networks/" class="dropdown-item">Networks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/nodes/" class="dropdown-item">Nodes</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/plugins/" class="dropdown-item">Plugins</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/services/" class="dropdown-item">Services</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/stacks/" class="dropdown-item">Stacks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/tasks/" class="dropdown-item">Tasks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/volumes/" class="dropdown-item">Volumes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../user_guide/docker_run/" class="dropdown-item">docker.run() guide</a>
+</li>
+                                    
+<li>
+    <a href="../../user_guide/generic_resources/" class="dropdown-item">Swarm generic resources</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../config/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../context/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#attach" class="nav-link">attach</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#commit" class="nav-link">commit</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#copy" class="nav-link">copy</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#create" class="nav-link">create</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#diff" class="nav-link">diff</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#execute" class="nav-link">execute</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#export" class="nav-link">export</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#inspect" class="nav-link">inspect</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#kill" class="nav-link">kill</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#list" class="nav-link">list</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#logs" class="nav-link">logs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#pause" class="nav-link">pause</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#prune" class="nav-link">prune</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#remove" class="nav-link">remove</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#rename" class="nav-link">rename</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#restart" class="nav-link">restart</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#run" class="nav-link">run</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#start" class="nav-link">start</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#stats" class="nav-link">stats</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#stop" class="nav-link">stop</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#top" class="nav-link">top</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#unpause" class="nav-link">unpause</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#update" class="nav-link">update</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#wait" class="nav-link">wait</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="attach">attach</h2>
+<pre><code class="python">docker.container.attach()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="commit">commit</h2>
+<pre><code class="python">docker.container.commit(container, tag=None, author=None, message=None, pause=True)
+</code></pre>
+
+<p>Create a new image from a container's changes</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>container</strong> <code>Union[python_on_whales.Container, str]</code>: The container to create the image from</li>
+<li><strong>tag</strong> <code>Optional[str]</code>: tag to apply on the image produced</li>
+<li><strong>author</strong> <code>Optional[str]</code>: Author (e.g., "John Hannibal Smith <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#97;&#110;&#110;&#105;&#98;&#97;&#108;&#64;&#97;&#45;&#116;&#101;&#97;&#109;&#46;&#99;&#111;&#109;">&#104;&#97;&#110;&#110;&#105;&#98;&#97;&#108;&#64;&#97;&#45;&#116;&#101;&#97;&#109;&#46;&#99;&#111;&#109;</a>")</li>
+<li><strong>message</strong> <code>Optional[str]</code>: Commit message</li>
+<li><strong>pause</strong> <code>bool</code>: Pause container during commit</li>
+</ul>
+<hr />
+<h2 id="copy">copy</h2>
+<pre><code class="python">docker.container.copy(source, destination)
+</code></pre>
+
+<p>Copy files/folders between a container and the local filesystem</p>
+<p>Alias: <code>docker.copy(...)</code></p>
+<pre><code class="python">from python_on_whales import docker
+
+docker.run(&quot;ubuntu&quot;, [&quot;sleep&quot;, &quot;infinity&quot;], name=&quot;dodo&quot;, remove=True, detach=True)
+
+docker.copy(&quot;/tmp/my_local_file.txt&quot;, (&quot;dodo&quot;, &quot;/path/in/container.txt&quot;))
+docker.copy((&quot;dodo&quot;, &quot;/path/in/container.txt&quot;), &quot;/tmp/my_local_file2.txt&quot;)
+</code></pre>
+
+<p>Doesn't yet support sending or receiving iterators of Python bytes.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>source</strong> <code>Union[str, pathlib.Path, Tuple[Union[python_on_whales.Container, str], Union[str, pathlib.Path]]]</code>: Local path or tuple. When using a tuple, the first element
+    of the tuple is the container, the second element is the path in
+    the container. ex: <code>source=("my-container", "/usr/bin/something")</code>.</li>
+<li><strong>destination</strong> <code>Union[str, pathlib.Path, Tuple[Union[python_on_whales.Container, str], Union[str, pathlib.Path]]]</code>: Local path or tuple. When using a tuple, the first element
+    of the tuple is the container, the second element is the path in
+    the container. ex: <code>source=("my-container", "/usr/bin/something")</code>.</li>
+</ul>
+<hr />
+<h2 id="create">create</h2>
+<pre><code class="python">docker.container.create(
+    image,
+    command=[],
+    *,
+    add_hosts=[],
+    blkio_weight=None,
+    blkio_weight_device=[],
+    cap_add=[],
+    cap_drop=[],
+    cgroup_parent=None,
+    cidfile=None,
+    cpu_period=None,
+    cpu_quota=None,
+    cpu_rt_period=None,
+    cpu_rt_runtime=None,
+    cpu_shares=None,
+    cpus=None,
+    cpuset_cpus=None,
+    cpuset_mems=None,
+    detach=False,
+    devices=[],
+    device_cgroup_rules=[],
+    device_read_bps=[],
+    device_read_iops=[],
+    device_write_bps=[],
+    device_write_iops=[],
+    content_trust=False,
+    dns=[],
+    dns_options=[],
+    dns_search=[],
+    domainname=None,
+    entrypoint=None,
+    envs={},
+    env_files=[],
+    expose=[],
+    gpus=None,
+    groups_add=[],
+    healthcheck=True,
+    health_cmd=None,
+    health_interval=None,
+    health_retries=None,
+    health_start_period=None,
+    health_timeout=None,
+    hostname=None,
+    init=False,
+    ip=None,
+    ip6=None,
+    ipc=None,
+    isolation=None,
+    kernel_memory=None,
+    labels={},
+    label_files=[],
+    link=[],
+    link_local_ip=[],
+    log_driver=None,
+    log_options=[],
+    mac_address=None,
+    memory=None,
+    memory_reservation=None,
+    memory_swap=None,
+    memory_swappiness=None,
+    mounts=[],
+    name=None,
+    networks=[],
+    network_aliases=[],
+    oom_kill=True,
+    oom_score_adj=None,
+    pid=None,
+    pids_limit=None,
+    platform=None,
+    privileged=False,
+    publish=[],
+    publish_all=False,
+    read_only=False,
+    restart=None,
+    remove=False,
+    runtime=None,
+    security_options=[],
+    shm_size=None,
+    sig_proxy=True,
+    stop_signal=None,
+    stop_timeout=None,
+    storage_options=[],
+    sysctl={},
+    tmpfs=[],
+    ulimit=[],
+    user=None,
+    userns=None,
+    uts=None,
+    volumes=[],
+    volume_driver=None,
+    volumes_from=[],
+    workdir=None
+)
+</code></pre>
+
+<p>Creates a container, but does not start it.</p>
+<p>Alias: <code>docker.create(...)</code></p>
+<p>Start it then with the <code>.start()</code> method.</p>
+<p>It might be useful if you want to delay the start of a container,
+to do some preparations beforehand. For example, it's common to do this
+workflow: <code>docker create</code> -&gt; <code>docker cp</code> -&gt; <code>docker start</code> to put files
+in the container before starting.</p>
+<p>There is no <code>detach</code> argument since it's a runtime option.</p>
+<p>The arguments are the same as <a href="#run"><code>docker.run</code></a>.</p>
+<hr />
+<h2 id="diff">diff</h2>
+<pre><code class="python">docker.container.diff(container)
+</code></pre>
+
+<p>List all the files modified, added or deleted since the container started.</p>
+<p>Alias: <code>docker.diff(...)</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>container</strong> <code>Union[python_on_whales.Container, str]</code>: The container to inspect</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>Dict[str, str]</code> Something like
+<code>{"/some_path": "A", "/some_file": "M", "/tmp": "D"}</code> for example.</p>
+<hr />
+<h2 id="execute">execute</h2>
+<pre><code class="python">docker.container.execute(container, command, detach=False)
+</code></pre>
+
+<p>Execute a command inside a container</p>
+<p>Alias: <code>docker.execute(...)</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>container</strong> <code>Union[python_on_whales.Container, str]</code>: The container to execute the command in.</li>
+<li><strong>command</strong> <code>Union[str, List[str]]</code>: The command to execute.</li>
+<li><strong>detach</strong> <code>bool</code>: if <code>True</code>, returns immediately with <code>None</code>. If <code>False</code>,
+    returns the command stdout as string.</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>Optional[str]</p>
+<hr />
+<h2 id="export">export</h2>
+<pre><code class="python">docker.container.export(container, output)
+</code></pre>
+
+<p>Export a container's filesystem as a tar archive</p>
+<p>Alias: <code>docker.export(...)</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>container</strong> <code>Union[python_on_whales.Container, str]</code>: The container to export.</li>
+<li><strong>output</strong> <code>Union[str, pathlib.Path]</code>: The path of the output tar archive.</li>
+</ul>
+<hr />
+<h2 id="inspect">inspect</h2>
+<pre><code class="python">docker.container.inspect(x)
+</code></pre>
+
+<p>Returns a container object from a name or ID.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>reference</strong>: A container name or ID, or a list of container names
+    and/or IDs</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>A <a href="/docker_objects/containers/"><code>python_on_whales.Container</code></a> object or a list of those
+if a list of IDs was passed as input.</p>
+<hr />
+<h2 id="kill">kill</h2>
+<pre><code class="python">docker.container.kill(containers, signal=None)
+</code></pre>
+
+<p>Kill a container.</p>
+<p>Alias: <code>docker.kill(...)</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>containers</strong> <code>Union[python_on_whales.Container, str, List[Union[python_on_whales.Container, str]]]</code>: One or more containers to kill</li>
+<li><strong>signal</strong> <code>Optional[str]</code>: The signal to send the container</li>
+</ul>
+<hr />
+<h2 id="list">list</h2>
+<pre><code class="python">docker.container.list(all=False, filters={})
+</code></pre>
+
+<p>List the containers on the host.</p>
+<p>Alias: <code>docker.ps(...)</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>all</strong> <code>bool</code>: If <code>True</code>, also returns containers that are not running.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A <code>List[python_on_whales.Container]</code></p>
+<hr />
+<h2 id="logs">logs</h2>
+<pre><code class="python">docker.container.logs(container, details=False, since=None, tail=None, timestamps=False, until=None)
+</code></pre>
+
+<p>Returns the logs of a container as a string.</p>
+<p>Alias: <code>docker.logs(...)</code></p>
+<p>The follow option is not yet implemented.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>container</strong> <code>Union[python_on_whales.Container, str]</code>: The container to get the logs of</li>
+<li><strong>details</strong> <code>bool</code>: Show extra details provided to logs</li>
+<li><strong>since</strong> <code>Union[None, datetime.datetime, datetime.timedelta]</code>: Use a datetime or timedelta to specify the lower
+    date limit for the logs.</li>
+<li><strong>tail</strong> <code>Optional[int]</code>: Number of lines to show from the end of the logs (default all)</li>
+<li><strong>timestamps</strong> <code>bool</code>: Put timestamps next to lines.</li>
+<li><strong>until</strong> <code>Union[None, datetime.datetime, datetime.timedelta]</code>: Use a datetime or a timedelta to specify the upper date
+    limit for the logs.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>str</code></p>
+<hr />
+<h2 id="pause">pause</h2>
+<pre><code class="python">docker.container.pause(containers)
+</code></pre>
+
+<p>Pauses one or more containers</p>
+<p>Alias: <code>docker.pause(...)</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>containers</strong> <code>Union[python_on_whales.Container, str, List[Union[python_on_whales.Container, str]]]</code>: One or more containers to pause</li>
+</ul>
+<hr />
+<h2 id="prune">prune</h2>
+<pre><code class="python">docker.container.prune(filters=[])
+</code></pre>
+
+<p>Remove containers that are not running.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>filters</strong> <code>Union[str, List[str]]</code>: Filters as strings or list of strings</li>
+</ul>
+<hr />
+<h2 id="remove">remove</h2>
+<pre><code class="python">docker.container.remove(containers, force=False, volumes=False)
+</code></pre>
+
+<p>Removes a container</p>
+<p>Alias: <code>docker.remove(...)</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>containers</strong> <code>Union[python_on_whales.Container, str, List[Union[python_on_whales.Container, str]]]</code>: One or more containers.</li>
+<li><strong>force</strong> <code>bool</code>: Force the removal of a running container (uses SIGKILL)</li>
+<li><strong>volumes</strong> <code>bool</code>: Remove anonymous volumes associated with the container</li>
+</ul>
+<hr />
+<h2 id="rename">rename</h2>
+<pre><code class="python">docker.container.rename(container, new_name)
+</code></pre>
+
+<p>Changes the name of a container.</p>
+<p>Alias: <code>docker.rename(...)</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>container</strong> <code>Union[python_on_whales.Container, str]</code>: The container to rename</li>
+<li><strong>new_name</strong> <code>str</code>: The new name of the container.</li>
+</ul>
+<hr />
+<h2 id="restart">restart</h2>
+<pre><code class="python">docker.container.restart(containers, time=None)
+</code></pre>
+
+<p>Restarts one or more container.</p>
+<p>Alias: <code>docker.restart(...)</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>containers</strong> <code>Union[python_on_whales.Container, str, List[Union[python_on_whales.Container, str]]]</code>: One or more containers to restart</li>
+<li><strong>time</strong> <code>Union[None, int, datetime.timedelta]</code>: Amount of to wait for stop before killing the container (default 10s).
+    If <code>int</code>, the unit is seconds.</li>
+</ul>
+<hr />
+<h2 id="run">run</h2>
+<pre><code class="python">docker.container.run(
+    image,
+    command=[],
+    *,
+    add_hosts=[],
+    blkio_weight=None,
+    blkio_weight_device=[],
+    cap_add=[],
+    cap_drop=[],
+    cgroup_parent=None,
+    cidfile=None,
+    cpu_period=None,
+    cpu_quota=None,
+    cpu_rt_period=None,
+    cpu_rt_runtime=None,
+    cpu_shares=None,
+    cpus=None,
+    cpuset_cpus=None,
+    cpuset_mems=None,
+    detach=False,
+    devices=[],
+    device_cgroup_rules=[],
+    device_read_bps=[],
+    device_read_iops=[],
+    device_write_bps=[],
+    device_write_iops=[],
+    content_trust=False,
+    dns=[],
+    dns_options=[],
+    dns_search=[],
+    domainname=None,
+    entrypoint=None,
+    envs={},
+    env_files=[],
+    expose=[],
+    gpus=None,
+    groups_add=[],
+    healthcheck=True,
+    health_cmd=None,
+    health_interval=None,
+    health_retries=None,
+    health_start_period=None,
+    health_timeout=None,
+    hostname=None,
+    init=False,
+    ip=None,
+    ip6=None,
+    ipc=None,
+    isolation=None,
+    kernel_memory=None,
+    labels={},
+    label_files=[],
+    link=[],
+    link_local_ip=[],
+    log_driver=None,
+    log_options=[],
+    mac_address=None,
+    memory=None,
+    memory_reservation=None,
+    memory_swap=None,
+    memory_swappiness=None,
+    mounts=[],
+    name=None,
+    networks=[],
+    network_aliases=[],
+    oom_kill=True,
+    oom_score_adj=None,
+    pid=None,
+    pids_limit=None,
+    platform=None,
+    privileged=False,
+    publish=[],
+    publish_all=False,
+    read_only=False,
+    restart=None,
+    remove=False,
+    runtime=None,
+    security_options=[],
+    shm_size=None,
+    sig_proxy=True,
+    stop_signal=None,
+    stop_timeout=None,
+    storage_options=[],
+    stream=False,
+    sysctl={},
+    tmpfs=[],
+    ulimit=[],
+    user=None,
+    userns=None,
+    uts=None,
+    volumes=[],
+    volume_driver=None,
+    volumes_from=[],
+    workdir=None
+)
+</code></pre>
+
+<p>Runs a container</p>
+<p>You can use <code>docker.run</code> or <code>docker.container.run</code> to call this function.</p>
+<p>For a deeper dive into the arguments and what they do, visit
+<a href="https://docs.docker.com/engine/reference/run/">https://docs.docker.com/engine/reference/run/</a></p>
+<p>If you want to know exactly how to call <code>docker.run()</code> depending on your
+use case (detach, stream...), take a look at
+the <a href="../../user_guide/docker_run/"><code>docker.run()</code> guide</a>.</p>
+<pre><code class="python">&gt;&gt;&gt; from python_on_whales import docker
+&gt;&gt;&gt; returned_string = docker.run(&quot;hello-world&quot;)
+&gt;&gt;&gt; print(returned_string)
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</code></pre>
+
+<pre><code class="python">&gt;&gt;&gt; from python_on_whales import docker
+&gt;&gt;&gt; result_string = docker.run(&quot;ubuntu&quot;, [&quot;ls&quot;, &quot;/host&quot;], volumes=[(&quot;/&quot;, &quot;/host&quot;, &quot;ro&quot;)])
+&gt;&gt;&gt; print(result_string)
+bin
+boot
+dev
+etc
+home
+init
+lib
+lib64
+lost+found
+media
+mnt
+opt
+proc
+projects
+root
+run
+sbin
+snap
+srv
+sys
+tmp
+usr
+var
+</code></pre>
+
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>image</strong> <code>Union[str, python_on_whales.Image]</code>: The docker image to use for the container</li>
+<li><strong>command</strong> <code>List[str]</code>: List of arguments to provide to the container.</li>
+<li><strong>add_hosts</strong> <code>List[Tuple[str, str]]</code>: hosts to add in the format of a tuple. For example,
+    <code>add_hosts=[("my_host_1", "192.168.30.31"), ("host2", "192.168.80.81")]</code></li>
+<li><strong>blkio_weight</strong> <code>Optional[int]</code>: Block IO (relative weight), between 10 and 1000,
+    or 0 to disable (default 0)</li>
+<li><strong>cpu_period</strong> <code>Optional[int]</code>: Limit CPU CFS (Completely Fair Scheduler) period</li>
+<li><strong>cpu_quota</strong> <code>Optional[int]</code>: Limit CPU CFS (Completely Fair Scheduler) quota</li>
+<li><strong>cpu_rt_period</strong> <code>Optional[int]</code>: Limit CPU real-time period in microseconds</li>
+<li><strong>cpu_rt_runtime</strong> <code>Optional[int]</code>: Limit CPU real-time runtime in microseconds</li>
+<li><strong>cpu_shares</strong> <code>Optional[int]</code>: CPU shares (relative weight)</li>
+<li><strong>cpus</strong> <code>Optional[float]</code>: The maximal amount of cpu the container can use.
+    <code>1</code> means one cpu core.</li>
+<li><strong>cpuset_cpus</strong> <code>Optional[List[int]]</code>: CPUs in which to allow execution. Must be given as a list.</li>
+<li><strong>cpuset_mems</strong> <code>Optional[List[int]]</code>: MEMs in which to allow execution. Must be given as a list.</li>
+<li><strong>detach</strong> <code>bool</code>: If <code>False</code>, returns the ouput of the container as a string.
+    If <code>True</code>, returns a <a href="/docker_objects/containers/"><code>python_on_whales.Container</code></a> object.</li>
+<li><strong>dns_search</strong> <code>List[str]</code>: Set custom DNS search domains</li>
+<li><strong>domainname</strong> <code>Optional[str]</code>: Container NIS domain name</li>
+<li><strong>entrypoint</strong> <code>Optional[str]</code>: Overwrite the default ENTRYPOINT of the image</li>
+<li><strong>envs</strong> <code>Dict[str, str]</code>: Environment variables as a <code>dict</code>.
+    For example: <code>{"OMP_NUM_THREADS": 3}</code></li>
+<li><strong>env_files</strong> <code>Union[str, pathlib.Path, List[Union[str, pathlib.Path]]]</code>: One or a list of env files.</li>
+<li><strong>gpus</strong> <code>Optional[Union[int, str]]</code>: For this to work, you need the
+    <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide">Nvidia container runtime</a>
+    The value needed is a <code>str</code> or <code>int</code>. Some examples of valid argument
+    are <code>"all"</code> or <code>"device=GPU-3a23c669-1f69-c64e-cf85-44e9b07e7a2a"</code> or
+    <code>"device=0,2"</code>. If you want 3 gpus, just write <code>gpus=3</code>.</li>
+<li><strong>hostname</strong> <code>Optional[str]</code>: Container host name</li>
+<li><strong>ip</strong> <code>Optional[str]</code>: IPv4 address (e.g., 172.30.100.104)</li>
+<li><strong>ip6</strong> <code>Optional[str]</code>: IPv6 address (e.g., 2001:db8::33)</li>
+<li><strong>ipc</strong> <code>Optional[str]</code>: IPC mode to use</li>
+<li><strong>isolation</strong> <code>Optional[str]</code>: Container isolation technology</li>
+<li><strong>kernel_memory</strong> <code>Optional[Union[int, str]]</code>: Kernel memory limit. <code>int</code> represents the number of bytes,
+    but you can use <code>"4k"</code> or <code>2g</code> for example.</li>
+<li><strong>labels</strong> <code>Dict[str, str]</code>: Set meta data on a container. The labels can be used later when filtering
+    containers with <code>docker.ps(filters='...')</code>. The labels can also be found on
+    each container with the attribute <code>my_container.config.labels</code>.</li>
+<li><strong>log_driver</strong> <code>Optional[str]</code>: Logging driver for the container</li>
+<li><strong>mac_adress</strong>: Container MAC address (e.g., <code>"92:d0:c6:0a:29:33"</code>)</li>
+<li><strong>memory</strong> <code>Optional[Union[int, str]]</code>:  Memory limit, valid values are <code>1024</code> (ints are bytes) or
+    <code>"43m"</code> or <code>"6g"</code>.</li>
+<li><strong>memory_reservation</strong> <code>Optional[Union[int, str]]</code>: Memory soft limit</li>
+<li><strong>memory_swap</strong> <code>Optional[Union[int, str]]</code>: Swap limit equal to memory plus swap: '-1'
+    to enable unlimited swap.</li>
+<li><strong>memory_swappiness</strong> <code>Optional[int]</code>: Tune container memory swappiness (0 to 100) (default -1)</li>
+<li><strong>name</strong> <code>Optional[str]</code>: The container name. If not provided, one is automatically genrated for
+    you.</li>
+<li><strong>healthcheck</strong> <code>bool</code>: Set to <code>False</code> to disable container periodic healthcheck.</li>
+<li><strong>oom_kill</strong> <code>bool</code>: Set to <code>False</code> to disable the OOM killer for this container.</li>
+<li><strong>pid</strong> <code>Optional[str]</code>: PID namespace to use</li>
+<li><strong>pids_limit</strong> <code>Optional[int]</code>: Tune container pids limit (set <code>-1</code> for unlimited)</li>
+<li><strong>platform</strong> <code>Optional[str]</code>: Set platform if server is multi-platform capable.</li>
+<li><strong>privileged</strong> <code>bool</code>: Give extended privileges to this container.</li>
+<li><strong>publish</strong> <code>List[Union[Tuple[Union[str, int], Union[str, int]], Tuple[Union[str, int], Union[str, int], str]]]</code>: Ports to publish, same as the <code>-p</code> argument in the Docker CLI.
+    example are <code>[(8000, 7000) , ("127.0.0.1:3000", 2000)]</code> or
+    <code>[("127.0.0.1:3000", 2000, "udp")]</code>.</li>
+<li><strong>publish_all</strong> <code>bool</code>: Publish all exposed ports to random ports.</li>
+<li><strong>read_only</strong> <code>bool</code>: Mount the container's root filesystem as read only.</li>
+<li><strong>restart</strong> <code>Optional[str]</code>: Restart policy to apply when a container exits (default "no")</li>
+<li><strong>remove</strong> <code>bool</code>: Automatically remove the container when it exits.</li>
+<li><strong>runtime</strong> <code>Optional[str]</code>: Runtime to use for this container.</li>
+<li><strong>security_options</strong> <code>List[str]</code>: Security options</li>
+<li><strong>shm_size</strong> <code>Optional[Union[int, str]]</code>: Size of /dev/shm. <code>int</code> is for bytes. But you can use <code>"512m"</code> or
+    <code>"4g"</code> for example.</li>
+<li><strong>stop_timeout</strong> <code>Optional[int]</code>: Signal to stop a container (default "SIGTERM")</li>
+<li><strong>storage_options</strong> <code>List[str]</code>: Storage driver options for the container</li>
+<li><strong>user</strong> <code>Optional[str]</code>: Username or UID (format: <code>&lt;name|uid&gt;[:&lt;group|gid&gt;]</code>)</li>
+<li><strong>userns</strong> <code>Optional[str]</code>:  User namespace to use</li>
+<li><strong>uts</strong> <code>Optional[str]</code>:  UTS namespace to use</li>
+<li><strong>volumes</strong> <code>Optional[List[Union[Tuple[Union[python_on_whales.Volume, str, pathlib.Path], Union[str, pathlib.Path]], Tuple[Union[python_on_whales.Volume, str, pathlib.Path], Union[str, pathlib.Path], str]]]]</code>:  Bind mount a volume. Some examples:
+    <code>[("/", "/host"), ("/etc/hosts", "/etc/hosts", "rw")]</code>.</li>
+<li><strong>volume_driver</strong> <code>Optional[str]</code>: Optional volume driver for the container</li>
+<li><strong>workdir</strong> <code>Optional[Union[str, pathlib.Path]]</code>: The directory in the container where the process will be executed.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>The container output as a string if detach is <code>False</code> (the default),
+and a <a href="/docker_objects/containers/"><code>python_on_whales.Container</code></a> if detach is <code>True</code>.</p>
+<hr />
+<h2 id="start">start</h2>
+<pre><code class="python">docker.container.start(containers, attach=False, stream=False)
+</code></pre>
+
+<p>Starts one or more stopped containers.</p>
+<p>Aliases: <code>docker.start</code>, <code>docker.container.start</code>,
+<code>python_on_whales.Container.start</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>containers</strong> <code>Union[python_on_whales.Container, str, List[Union[python_on_whales.Container, str]]]</code>: One or a list of containers.</li>
+</ul>
+<hr />
+<h2 id="stats">stats</h2>
+<pre><code class="python">docker.container.stats(all=False)
+</code></pre>
+
+<p>Get containers resource usage statistics</p>
+<p>Alias: <code>docker.stats(...)</code></p>
+<p>Usage:</p>
+<pre><code class="python">from python_on_whales import docker
+
+docker.run(&quot;redis&quot;, detach=True)
+print(docker.stats())
+# [&lt;&lt;class 'python_on_whales.components.container.ContainerStats'&gt; object,
+# attributes are block_read=0, block_write=0, cpu_percentage=0.08,
+# container=e90ae41a5b17,
+# container_id=e90ae41a5b17df998584141692f1e361c485e8d00c37ee21fdc360d3523dd1c1,
+# memory_percentage=0.18, memory_used=11198791, memory_limit=6233071288,
+# container_name=crazy_northcutt, net_upload=696, net_download=0&gt;]
+</code></pre>
+
+<p>The data unit is the byte.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>all</strong> <code>bool</code>: Get the stats of all containers, not just running ones.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A <code>List[python_on_whales.ContainerStats]</code>.</p>
+<hr />
+<h2 id="stop">stop</h2>
+<pre><code class="python">docker.container.stop(containers, time=None)
+</code></pre>
+
+<p>Stops one or more running containers</p>
+<p>Alias: <code>docker.stop(...)</code></p>
+<p>Aliases: <code>docker.stop</code>, <code>docker.container.stop</code>,
+<code>python_on_whales.Container.stop</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>containers</strong> <code>Union[python_on_whales.Container, str, List[Union[python_on_whales.Container, str]]]</code>: One or a list of containers.</li>
+<li><strong>time</strong> <code>Optional[Union[int, datetime.timedelta]]</code>: Seconds to wait for stop before killing a container (default 10)</li>
+</ul>
+<hr />
+<h2 id="top">top</h2>
+<pre><code class="python">docker.container.top()
+</code></pre>
+
+<p>Get the running processes of a container</p>
+<p>Alias: <code>docker.top(...)</code></p>
+<p>Not yet implemented</p>
+<hr />
+<h2 id="unpause">unpause</h2>
+<pre><code class="python">docker.container.unpause(x)
+</code></pre>
+
+<p>Unpause all processes within one or more containers</p>
+<p>Alias: <code>docker.unpause(...)</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>x</strong> <code>Union[python_on_whales.Container, str, List[Union[python_on_whales.Container, str]]]</code>: One or more containers (name, id or <a href="/docker_objects/containers/"><code>python_on_whales.Container</code></a> object).</li>
+</ul>
+<hr />
+<h2 id="update">update</h2>
+<pre><code class="python">docker.container.update(
+    x,
+    blkio_weight=None,
+    cpu_period=None,
+    cpu_quota=None,
+    cpu_rt_period=None,
+    cpu_rt_runtime=None,
+    cpu_shares=None,
+    cpus=None,
+    cpuset_cpus=None,
+    cpuset_mems=None,
+    kernel_memory=None,
+    memory=None,
+    memory_reservation=None,
+    memory_swap=None,
+    pids_limit=None,
+    restart=None,
+)
+</code></pre>
+
+<p>Update configuration of one or more containers</p>
+<p>Alias: <code>docker.update(...)</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>x</strong> <code>Union[python_on_whales.Container, str, List[Union[python_on_whales.Container, str]]]</code>: One or a list of containers to update.</li>
+<li><strong>blkio_weight</strong> <code>Optional[int]</code>: Block IO (relative weight), between 10 and 1000,
+    or 0 to disable (default 0)</li>
+<li><strong>cpu_period</strong> <code>Optional[int]</code>: Limit CPU CFS (Completely Fair Scheduler) period</li>
+<li><strong>cpu_quota</strong> <code>Optional[int]</code>: Limit CPU CFS (Completely Fair Scheduler) quota</li>
+<li><strong>cpu_rt_period</strong> <code>Optional[int]</code>: Limit CPU real-time period in microseconds</li>
+<li><strong>cpu_rt_runtime</strong> <code>Optional[int]</code>: Limit CPU real-time runtime in microseconds</li>
+<li><strong>cpu_shares</strong> <code>Optional[int]</code>: CPU shares (relative weight)</li>
+<li><strong>cpus</strong> <code>Optional[float]</code>: The maximal amount of cpu the container can use.
+    <code>1</code> means one cpu core.</li>
+<li><strong>cpuset_cpus</strong> <code>Optional[List[int]]</code>: CPUs in which to allow execution. Must be given as a list.</li>
+<li><strong>cpuset_mems</strong> <code>Optional[List[int]]</code>: MEMs in which to allow execution. Must be given as a list.</li>
+<li><strong>memory</strong> <code>Optional[Union[int, str]]</code>:  Memory limit, valid values are <code>1024</code> (ints are bytes) or
+    <code>"43m"</code> or <code>"6g"</code>.</li>
+<li><strong>memory_reservation</strong> <code>Optional[Union[int, str]]</code>: Memory soft limit</li>
+<li><strong>memory_swap</strong> <code>Optional[Union[int, str]]</code>: Swap limit equal to memory plus swap: '-1'
+    to enable unlimited swap.</li>
+<li><strong>pids_limit</strong> <code>Optional[int]</code>: Tune container pids limit (set <code>-1</code> for unlimited)</li>
+<li><strong>restart</strong> <code>Optional[str]</code>: Restart policy to apply when a container exits (default "no")</li>
+</ul>
+<hr />
+<h2 id="wait">wait</h2>
+<pre><code class="python">docker.container.wait(x)
+</code></pre>
+
+<p>Block until one or more containers stop, then returns their exit codes</p>
+<p>Alias: <code>docker.wait(...)</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>x</strong> <code>Union[python_on_whales.Container, str, List[Union[python_on_whales.Container, str]]]</code>: One or a list of containers to wait for.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>An <code>int</code> if a single container was passed as argument or a list of ints
+if multiple containers were passed as arguments.</p>
+<p>Some Examples:</p>
+<pre><code class="python">cont = docker.run(&quot;ubuntu&quot;, [&quot;bash&quot;, &quot;-c&quot;, &quot;sleep 2 &amp;&amp; exit 8&quot;], detach=True)
+
+exit_code = docker.wait(cont)
+
+print(exit_code)
+# 8
+docker.container.remove(cont)
+</code></pre>
+
+<pre><code class="python">cont_1 = docker.run(&quot;ubuntu&quot;, [&quot;bash&quot;, &quot;-c&quot;, &quot;sleep 4 &amp;&amp; exit 8&quot;], detach=True)
+cont_2 = docker.run(&quot;ubuntu&quot;, [&quot;bash&quot;, &quot;-c&quot;, &quot;sleep 2 &amp;&amp; exit 10&quot;], detach=True)
+
+exit_codes = docker.wait([cont_1, cont_2])
+
+print(exit_codes)
+# [8, 10]
+docker.container.remove([cont_1, cont_2])
+</code></pre>
+
+<hr /></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

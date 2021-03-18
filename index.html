@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Python on whales docs">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Python on whales</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Python on whales</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="docker_client/" class="nav-link">Docker client</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sub-commands <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="sub-commands/buildx/" class="dropdown-item">docker buildx</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/compose/" class="dropdown-item">docker compose</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/config/" class="dropdown-item">docker config</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/container/" class="dropdown-item">docker container</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/context/" class="dropdown-item">docker context</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/image/" class="dropdown-item">docker image</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/manifest/" class="dropdown-item">docker manifest</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/network/" class="dropdown-item">docker network</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/node/" class="dropdown-item">docker node</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/plugin/" class="dropdown-item">docker plugin</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/secret/" class="dropdown-item">docker secret</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/service/" class="dropdown-item">docker service</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/stack/" class="dropdown-item">docker stack</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/swarm/" class="dropdown-item">docker swarm</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/system/" class="dropdown-item">docker system</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/task/" class="dropdown-item">docker task</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/trust/" class="dropdown-item">docker trust</a>
+</li>
+                                    
+<li>
+    <a href="sub-commands/volume/" class="dropdown-item">docker volume</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Docker objects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="docker_objects/builders/" class="dropdown-item">Builders</a>
+</li>
+                                    
+<li>
+    <a href="docker_objects/configs/" class="dropdown-item">Configs</a>
+</li>
+                                    
+<li>
+    <a href="docker_objects/containers/" class="dropdown-item">Containers</a>
+</li>
+                                    
+<li>
+    <a href="docker_objects/images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="docker_objects/networks/" class="dropdown-item">Networks</a>
+</li>
+                                    
+<li>
+    <a href="docker_objects/nodes/" class="dropdown-item">Nodes</a>
+</li>
+                                    
+<li>
+    <a href="docker_objects/plugins/" class="dropdown-item">Plugins</a>
+</li>
+                                    
+<li>
+    <a href="docker_objects/services/" class="dropdown-item">Services</a>
+</li>
+                                    
+<li>
+    <a href="docker_objects/stacks/" class="dropdown-item">Stacks</a>
+</li>
+                                    
+<li>
+    <a href="docker_objects/tasks/" class="dropdown-item">Tasks</a>
+</li>
+                                    
+<li>
+    <a href="docker_objects/volumes/" class="dropdown-item">Volumes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="user_guide/docker_run/" class="dropdown-item">docker.run() guide</a>
+</li>
+                                    
+<li>
+    <a href="user_guide/generic_resources/" class="dropdown-item">Swarm generic resources</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#how-to-install" class="nav-link">How to install?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#some-cool-examples" class="nav-link">Some cool examples</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#main-features" class="nav-link">Main features</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#why-another-project-why-not-build-on-docker-py" class="nav-link">Why another project? Why not build on Docker-py?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#should-i-use-docker-py-or-python-on-whales" class="nav-link">Should I use Docker-py or Python on Whales?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#where-is-the-project-now-where-is-it-going" class="nav-link">Where is the project now? Where is it going?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#what-about-the-license" class="nav-link">What about the license?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p><img src="https://raw.githubusercontent.com/gabrieldemarmiesse/python-on-whales/master/img/full.png" alt="logo" class="responsive" style="width: 80%; height: auto;"></p>
+<p>A Docker client for Python, designed to be fun and intuivive!</p>
+<p>Works on Linux, MacOS and Windows, for Python 3.7 and above. </p>
+<p>The docs can be found at this address: <a href="https://gabrieldemarmiesse.github.io/python-on-whales/">https://gabrieldemarmiesse.github.io/python-on-whales/</a></p>
+<p>The Github repo can be found at this adress: <a href="https://github.com/gabrieldemarmiesse/python-on-whales">https://github.com/gabrieldemarmiesse/python-on-whales</a></p>
+<h2 id="how-to-install">How to install?</h2>
+<pre><code class="bash">pip install python-on-whales
+</code></pre>
+
+<h2 id="some-cool-examples">Some cool examples</h2>
+<p>Start by doing</p>
+<pre><code class="python">from python_on_whales import docker
+</code></pre>
+
+<p>and then:</p>
+<ul>
+<li><code>docker run hello-world</code> -&gt; <a href="sub-commands/container/#run"><code>docker.run("hello-world")</code></a></li>
+<li><code>docker pull ubuntu</code> -&gt; <a href="sub-commands/image/#pull"><code>docker.pull("ubuntu")</code></a></li>
+<li><code>docker build ./</code> -&gt; <a href="sub-commands/buildx/#build"><code>docker.build("./")</code></a></li>
+<li><code>docker compose up my_service</code> -&gt; <a href="sub-commands/compose/#up"><code>docker.compose.up(["my_service"])</code></a></li>
+<li><code>docker image ls</code> -&gt; <a href="sub-commands/image/#list"><code>docker.image.list()</code></a></li>
+<li><code>docker ps</code> -&gt; <a href="sub-commands/container/#list"><code>docker.ps()</code></a></li>
+</ul>
+<p>You get the idea 🙂 it's the same as the CLI we all know and love.</p>
+<pre><code class="python">&gt;&gt;&gt; from python_on_whales import docker
+
+&gt;&gt;&gt; output = docker.run(&quot;hello-world&quot;)
+&gt;&gt;&gt; print(output)
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+...
+</code></pre>
+
+<pre><code class="python">&gt;&gt;&gt; from python_on_whales import docker
+&gt;&gt;&gt; print(docker.run(&quot;nvidia/cuda:11.0-base&quot;, [&quot;nvidia-smi&quot;], gpus=&quot;all&quot;))
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.06    Driver Version: 450.51.06    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla T4            On   | 00000000:00:1E.0 Off |                    0 |
+| N/A   34C    P8     9W /  70W |      0MiB / 15109MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+</code></pre>
+
+<pre><code class="python">&gt;&gt;&gt; from python_on_whales import docker
+&gt;&gt;&gt; my_docker_image = docker.pull(&quot;ubuntu:20.04&quot;)
+20.04: Pulling from library/ubuntu
+e6ca3592b144: Downloading [=============&gt;                                     ]  7.965MB/28.56MB
+534a5505201d: Download complete
+990916bd23bb: Download complete
+
+&gt;&gt;&gt; print(my_docker_image.repo_tags)
+['ubuntu:20.04']
+
+&gt;&gt;&gt; my_docker_image.remove()
+</code></pre>
+
+<pre><code class="python">&gt;&gt;&gt; from python_on_whales import docker
+&gt;&gt;&gt; my_image = docker.build(&quot;.&quot;, tags=&quot;some_name&quot;)  # uses Buildx/buildkit by default
+[+] Building 1.6s (17/17) FINISHED
+ =&gt; [internal] load build definition from Dockerfile                                                            0.0s
+ =&gt; =&gt; transferring dockerfile: 32B                                                                             0.0s
+ =&gt; [internal] load .dockerignore                                                                               0.0s
+ =&gt; =&gt; transferring context: 2B                                                                                 0.0s
+ =&gt; [internal] load metadata for docker.io/library/python:3.6                                                   1.4s
+ =&gt; [python_dependencies 1/5] FROM docker.io/library/python:3.6@sha256:29328c59adb9ee6acc7bea8eb86d0cb14033c85  0.0s
+ =&gt; [internal] load build context                                                                               0.1s
+ =&gt; =&gt; transferring context: 72.86kB                                                                            0.0s
+ =&gt; CACHED [python_dependencies 2/5] RUN pip install typeguard pydantic requests tqdm                           0.0s
+ =&gt; CACHED [python_dependencies 3/5] COPY tests/test-requirements.txt /tmp/                                     0.0s
+ =&gt; CACHED [python_dependencies 4/5] COPY requirements.txt /tmp/                                                0.0s
+ =&gt; CACHED [python_dependencies 5/5] RUN pip install -r /tmp/test-requirements.txt -r /tmp/requirements.txt     0.0s
+ =&gt; CACHED [tests_ubuntu_install_without_buildx 1/7] RUN apt-get update &amp;&amp;     apt-get install -y       apt-tr  0.0s
+ =&gt; CACHED [tests_ubuntu_install_without_buildx 2/7] RUN curl -fsSL https://download.docker.com/linux/ubuntu/g  0.0s
+ =&gt; CACHED [tests_ubuntu_install_without_buildx 3/7] RUN add-apt-repository    &quot;deb [arch=amd64] https://downl  0.0s
+ =&gt; CACHED [tests_ubuntu_install_without_buildx 4/7] RUN  apt-get update &amp;&amp;      apt-get install -y docker-ce-  0.0s
+ =&gt; CACHED [tests_ubuntu_install_without_buildx 5/7] WORKDIR /python-on-whales                                  0.0s
+ =&gt; CACHED [tests_ubuntu_install_without_buildx 6/7] COPY . .                                                   0.0s
+ =&gt; CACHED [tests_ubuntu_install_without_buildx 7/7] RUN pip install -e .                                       0.0s
+ =&gt; exporting to image                                                                                          0.1s
+ =&gt; =&gt; exporting layers                                                                                         0.0s
+ =&gt; =&gt; writing image sha256:e1c2382d515b097ebdac4ed189012ca3b34ab6be65ba0c650421ebcac8b70a4d                    0.0s
+ =&gt; =&gt; naming to docker.io/library/some_image_name
+</code></pre>
+
+<h2 id="main-features">Main features</h2>
+<ul>
+<li>1 to 1 mapping between the CLI interface and the Python API. No need to look in the docs
+what is the name of the function/argument you need.</li>
+<li>Support for the latest Docker features: 
+<a href="https://github.com/docker/buildx">Docker buildx/buildkit</a>, 
+<code>docker run --gpu=all ...</code></li>
+<li>Support for Docker stack, services and Swarm (same API as the command line).</li>
+<li>Progress bars and progressive outputs when pulling, pushing, loading, building...</li>
+<li>Support for some other CLI commands that are not in <a href="https://docker-py.readthedocs.io/en/stable/">Docker-py</a>: 
+<code>docker cp</code>, <code>docker run --cpus ...</code> and more.</li>
+<li>Nice SSH support for remote daemons.</li>
+<li>Docker object as Python objects: Container, Images, Volumes, Services... and their
+attributes are updated in real-time!</li>
+<li>Each Docker object can be used as a context manager. When getting out of the 
+context, the Docker object is removed automatically, even if an exception occurs.</li>
+<li>A fully typed API (Mypy and IDE-friendly) compatible with <code>pathlib</code> and <code>os.path</code></li>
+<li>All Docker objects and the Docker client are safe to use with multithreading and multiprocessing.</li>
+</ul>
+<h2 id="why-another-project-why-not-build-on-docker-py">Why another project? Why not build on Docker-py?</h2>
+<p>In a sense this project is built on top of <a href="https://docker-py.readthedocs.io/en/stable/">Docker-py</a> 
+because the implementation, the organisation and the API is inspired from the project, but the codebases 
+could not be the same.</p>
+<p>Two major differences do not permit that:</p>
+<p>1) The API is quite different. The aim of Python on Whales is to provide a 1-to-1 
+mapping between the Docker command line and Python, so that users don't even have 
+to open the docs to do write code.</p>
+<p>2) While <a href="https://docker-py.readthedocs.io/en/stable/">Docker-py</a> is a complete re-implementation of the Docker client binary 
+(written in Go), Python on whales sits on top of the Docker client binary, which makes 
+implementing new features much easier and safer. For example, it's 
+<a href="https://github.com/docker/docker-py/issues/2230#issuecomment-454344497">unlikely that docker-py supports Buildx/buildkit</a>
+anytime soon because rewriting a large Go codebase in Python is hard work.</p>
+<p><img alt="" src="img/docker_clients.png" /></p>
+<h2 id="should-i-use-docker-py-or-python-on-whales">Should I use Docker-py or Python on Whales?</h2>
+<p>Well, it's written in each project's description!</p>
+<ul>
+<li>Docker-py: A Python library for the Docker Engine API</li>
+<li>Python on whales: An awesome Python wrapper for an awesome Docker CLI</li>
+</ul>
+<p>If you need to talk to the Docker engine directly, you need to do low level operations,
+use docker-py. Some good example would be writing the code to control docker from an IDE, 
+or if the speed of Docker calls is very important. 
+If you don't want to depend on the Docker CLI binary (~50MB), use docker-py.</p>
+<p>If you wanted to call the docker command line from Python, 
+do high level operations, use Python on Whales.
+For example if you want to write your CI logic in Python rather than in bash (a very good choice 😉).
+Some commands are only available in Python on whales 
+too: <code>docker.buildx.build(...)</code>, <code>docker.stack.deploy(...)</code>...</p>
+<p>Use the right tool for the right job 🙂</p>
+<h2 id="where-is-the-project-now-where-is-it-going">Where is the project now? Where is it going?</h2>
+<table>
+<thead>
+<tr>
+<th>sub-command</th>
+<th>Functions implemented</th>
+<th>Progress</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buildx</td>
+<td>10/11</td>
+<td><img alt="50%" src="https://progress-bar.dev/92" /></td>
+</tr>
+<tr>
+<td>compose</td>
+<td>6/24</td>
+<td><img alt="8%" src="https://progress-bar.dev/25" /></td>
+</tr>
+<tr>
+<td>config</td>
+<td>4/4</td>
+<td><img alt="50%" src="https://progress-bar.dev/100" /></td>
+</tr>
+<tr>
+<td>container</td>
+<td>22/24</td>
+<td><img alt="50%" src="https://progress-bar.dev/91" /></td>
+</tr>
+<tr>
+<td>context</td>
+<td>4/6</td>
+<td><img alt="50%" src="https://progress-bar.dev/67" /></td>
+</tr>
+<tr>
+<td>image</td>
+<td>12/13</td>
+<td><img alt="50%" src="https://progress-bar.dev/92" /></td>
+</tr>
+<tr>
+<td>manifest</td>
+<td>0/4</td>
+<td><img alt="50%" src="https://progress-bar.dev/0" /></td>
+</tr>
+<tr>
+<td>network</td>
+<td>7/7</td>
+<td><img alt="100%" src="https://progress-bar.dev/100" /></td>
+</tr>
+<tr>
+<td>node</td>
+<td>7/7</td>
+<td><img alt="100%" src="https://progress-bar.dev/100" /></td>
+</tr>
+<tr>
+<td>plugins</td>
+<td>10/10</td>
+<td><img alt="50%" src="https://progress-bar.dev/100" /></td>
+</tr>
+<tr>
+<td>secret</td>
+<td>4/4</td>
+<td><img alt="100%" src="https://progress-bar.dev/100" /></td>
+</tr>
+<tr>
+<td>service</td>
+<td>7/9</td>
+<td><img alt="50%" src="https://progress-bar.dev/78" /></td>
+</tr>
+<tr>
+<td>stack</td>
+<td>5/5</td>
+<td><img alt="100%" src="https://progress-bar.dev/100" /></td>
+</tr>
+<tr>
+<td>swarm</td>
+<td>8/8</td>
+<td><img alt="100%" src="https://progress-bar.dev/100" /></td>
+</tr>
+<tr>
+<td>system</td>
+<td>3/4</td>
+<td><img alt="50%" src="https://progress-bar.dev/75" /></td>
+</tr>
+<tr>
+<td>trust</td>
+<td>0/3</td>
+<td><img alt="50%" src="https://progress-bar.dev/0" /></td>
+</tr>
+<tr>
+<td>volume</td>
+<td>7/7</td>
+<td><img alt="50%" src="https://progress-bar.dev/100" /></td>
+</tr>
+</tbody>
+</table>
+<p>Take those numbers with a grain of salt. The functions don't all need the same amount of work to be implemented.</p>
+<h2 id="what-about-the-license">What about the license?</h2>
+<p>It's a MIT license, so quite permissive.</p>
+<p>The license can be found <a href="https://github.com/gabrieldemarmiesse/python-on-whales/blob/master/LICENSE">in the git repository</a>.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.1.2
+Build Date UTC : 2021-03-18 15:48:50.374558+00:00
+-->

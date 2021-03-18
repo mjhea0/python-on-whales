@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>docker compose - Python on whales</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Python on whales</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../docker_client/" class="nav-link">Docker client</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sub-commands <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../buildx/" class="dropdown-item">docker buildx</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">docker compose</a>
+</li>
+                                    
+<li>
+    <a href="../config/" class="dropdown-item">docker config</a>
+</li>
+                                    
+<li>
+    <a href="../container/" class="dropdown-item">docker container</a>
+</li>
+                                    
+<li>
+    <a href="../context/" class="dropdown-item">docker context</a>
+</li>
+                                    
+<li>
+    <a href="../image/" class="dropdown-item">docker image</a>
+</li>
+                                    
+<li>
+    <a href="../manifest/" class="dropdown-item">docker manifest</a>
+</li>
+                                    
+<li>
+    <a href="../network/" class="dropdown-item">docker network</a>
+</li>
+                                    
+<li>
+    <a href="../node/" class="dropdown-item">docker node</a>
+</li>
+                                    
+<li>
+    <a href="../plugin/" class="dropdown-item">docker plugin</a>
+</li>
+                                    
+<li>
+    <a href="../secret/" class="dropdown-item">docker secret</a>
+</li>
+                                    
+<li>
+    <a href="../service/" class="dropdown-item">docker service</a>
+</li>
+                                    
+<li>
+    <a href="../stack/" class="dropdown-item">docker stack</a>
+</li>
+                                    
+<li>
+    <a href="../swarm/" class="dropdown-item">docker swarm</a>
+</li>
+                                    
+<li>
+    <a href="../system/" class="dropdown-item">docker system</a>
+</li>
+                                    
+<li>
+    <a href="../task/" class="dropdown-item">docker task</a>
+</li>
+                                    
+<li>
+    <a href="../trust/" class="dropdown-item">docker trust</a>
+</li>
+                                    
+<li>
+    <a href="../volume/" class="dropdown-item">docker volume</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Docker objects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../docker_objects/builders/" class="dropdown-item">Builders</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/configs/" class="dropdown-item">Configs</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/containers/" class="dropdown-item">Containers</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/networks/" class="dropdown-item">Networks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/nodes/" class="dropdown-item">Nodes</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/plugins/" class="dropdown-item">Plugins</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/services/" class="dropdown-item">Services</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/stacks/" class="dropdown-item">Stacks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/tasks/" class="dropdown-item">Tasks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/volumes/" class="dropdown-item">Volumes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../user_guide/docker_run/" class="dropdown-item">docker.run() guide</a>
+</li>
+                                    
+<li>
+    <a href="../../user_guide/generic_resources/" class="dropdown-item">Swarm generic resources</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../buildx/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../config/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#some-notes-about-the-compose-functions" class="nav-link">Some notes about the compose functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#build" class="nav-link">build</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#config" class="nav-link">config</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#create" class="nav-link">create</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#down" class="nav-link">down</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#events" class="nav-link">events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#exec" class="nav-link">exec</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#images" class="nav-link">images</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#is_installed" class="nav-link">is_installed</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#kill" class="nav-link">kill</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#logs" class="nav-link">logs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#pause" class="nav-link">pause</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#port" class="nav-link">port</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#ps" class="nav-link">ps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#pull" class="nav-link">pull</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#push" class="nav-link">push</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#restart" class="nav-link">restart</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#rm" class="nav-link">rm</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#run" class="nav-link">run</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#scale" class="nav-link">scale</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#start" class="nav-link">start</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#stop" class="nav-link">stop</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#top" class="nav-link">top</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#unpause" class="nav-link">unpause</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#up" class="nav-link">up</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#version" class="nav-link">version</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="some-notes-about-the-compose-functions">Some notes about the compose functions</h2>
+<p>Behind the scenes, 
+the <a href="https://github.com/docker/compose-cli">Go implementation of Docker compose</a>
+is called, not the <a href="https://github.com/docker/compose">Python implementation</a>.</p>
+<p>The Go implementation of compose is still experimental, so take the appropriate precautions.</p>
+<p>If you don't need to set any project-wide options, like the project name or 
+the compose file path, you can just import <code>docker</code> and start working.</p>
+<pre><code class="python">from python_on_whales import docker
+
+docker.compose.build()
+docker.compose.up()
+...
+docker.compose.down()
+</code></pre>
+
+<p>Otherwise, you have to define your project-wide options only once, when creating the Docker client.</p>
+<pre><code class="python">from python_on_whales import DockerClient
+
+docker = DockerClient(compose_files=[&quot;./my-compose-file.yml&quot;])
+
+docker.compose.build()
+docker.compose.up()
+...
+docker.compose.down()
+</code></pre>
+
+<h2 id="build">build</h2>
+<pre><code class="python">docker.compose.build(services=[])
+</code></pre>
+
+<p>Build services declared in a yaml compose file.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>services</strong> <code>List[str]</code>: The services to build (as strings).
+    If empty (default), all services are built.</li>
+</ul>
+<hr />
+<h2 id="config">config</h2>
+<pre><code class="python">docker.compose.config()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="create">create</h2>
+<pre><code class="python">docker.compose.create()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="down">down</h2>
+<pre><code class="python">docker.compose.down()
+</code></pre>
+
+<p>Stops and removes the containers</p>
+<hr />
+<h2 id="events">events</h2>
+<pre><code class="python">docker.compose.events()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="exec">exec</h2>
+<pre><code class="python">docker.compose.exec()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="images">images</h2>
+<pre><code class="python">docker.compose.images()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="is_installed">is_installed</h2>
+<pre><code class="python">docker.compose.is_installed()
+</code></pre>
+
+<p>Returns <code>True</code> if docker compose (the one written in Go)
+is installed and working.</p>
+<hr />
+<h2 id="kill">kill</h2>
+<pre><code class="python">docker.compose.kill()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="logs">logs</h2>
+<pre><code class="python">docker.compose.logs()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="pause">pause</h2>
+<pre><code class="python">docker.compose.pause()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="port">port</h2>
+<pre><code class="python">docker.compose.port()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="ps">ps</h2>
+<pre><code class="python">docker.compose.ps()
+</code></pre>
+
+<p>Returns the containers that were created by the current project.</p>
+<p><strong>Returns</strong></p>
+<p>A <code>List[python_on_whales.Container]</code></p>
+<hr />
+<h2 id="pull">pull</h2>
+<pre><code class="python">docker.compose.pull(services=[])
+</code></pre>
+
+<p>Pull service images</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>services</strong> <code>List[str]</code>: The list of services to select. Only the images of those
+    services will be pulled. If no services are specified (the default
+    behavior) all images of all services are pulled.</li>
+</ul>
+<hr />
+<h2 id="push">push</h2>
+<pre><code class="python">docker.compose.push(services=[])
+</code></pre>
+
+<p>Push service images</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>services</strong> <code>List[str]</code>: The list of services to select. Only the images of those
+    services will be pushed. If no services are specified (the default
+    behavior) all images of all services are pushed.</li>
+</ul>
+<hr />
+<h2 id="restart">restart</h2>
+<pre><code class="python">docker.compose.restart()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="rm">rm</h2>
+<pre><code class="python">docker.compose.rm()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="run">run</h2>
+<pre><code class="python">docker.compose.run()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="scale">scale</h2>
+<pre><code class="python">docker.compose.scale()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="start">start</h2>
+<pre><code class="python">docker.compose.start()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="stop">stop</h2>
+<pre><code class="python">docker.compose.stop()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="top">top</h2>
+<pre><code class="python">docker.compose.top()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="unpause">unpause</h2>
+<pre><code class="python">docker.compose.unpause()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="up">up</h2>
+<pre><code class="python">docker.compose.up(services=[], build=False, detach=False)
+</code></pre>
+
+<p>Start the containers.</p>
+<p>Reading the logs of the containers is not yet implemented.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>services</strong> <code>List[str]</code>: The services to start. If empty (default), all services are
+    started.</li>
+<li><strong>build</strong> <code>bool</code>: If <code>True</code>, build the docker images before starting the containers
+    even if a docker image with this name already exists.
+    If <code>False</code> (the default), build only the docker images that do not already
+    exist.</li>
+<li><strong>detach</strong> <code>bool</code>: If <code>True</code>, run the containers in the background. If <code>False</code> this
+    function returns only when all containers have stopped.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>None</code> at the moment. The plan is to be able to capture and stream the logs later.
+It's not yet implemented.</p>
+<hr />
+<h2 id="version">version</h2>
+<pre><code class="python">docker.compose.version()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr /></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>docker buildx - Python on whales</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Python on whales</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../docker_client/" class="nav-link">Docker client</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sub-commands <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">docker buildx</a>
+</li>
+                                    
+<li>
+    <a href="../compose/" class="dropdown-item">docker compose</a>
+</li>
+                                    
+<li>
+    <a href="../config/" class="dropdown-item">docker config</a>
+</li>
+                                    
+<li>
+    <a href="../container/" class="dropdown-item">docker container</a>
+</li>
+                                    
+<li>
+    <a href="../context/" class="dropdown-item">docker context</a>
+</li>
+                                    
+<li>
+    <a href="../image/" class="dropdown-item">docker image</a>
+</li>
+                                    
+<li>
+    <a href="../manifest/" class="dropdown-item">docker manifest</a>
+</li>
+                                    
+<li>
+    <a href="../network/" class="dropdown-item">docker network</a>
+</li>
+                                    
+<li>
+    <a href="../node/" class="dropdown-item">docker node</a>
+</li>
+                                    
+<li>
+    <a href="../plugin/" class="dropdown-item">docker plugin</a>
+</li>
+                                    
+<li>
+    <a href="../secret/" class="dropdown-item">docker secret</a>
+</li>
+                                    
+<li>
+    <a href="../service/" class="dropdown-item">docker service</a>
+</li>
+                                    
+<li>
+    <a href="../stack/" class="dropdown-item">docker stack</a>
+</li>
+                                    
+<li>
+    <a href="../swarm/" class="dropdown-item">docker swarm</a>
+</li>
+                                    
+<li>
+    <a href="../system/" class="dropdown-item">docker system</a>
+</li>
+                                    
+<li>
+    <a href="../task/" class="dropdown-item">docker task</a>
+</li>
+                                    
+<li>
+    <a href="../trust/" class="dropdown-item">docker trust</a>
+</li>
+                                    
+<li>
+    <a href="../volume/" class="dropdown-item">docker volume</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Docker objects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../docker_objects/builders/" class="dropdown-item">Builders</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/configs/" class="dropdown-item">Configs</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/containers/" class="dropdown-item">Containers</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/networks/" class="dropdown-item">Networks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/nodes/" class="dropdown-item">Nodes</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/plugins/" class="dropdown-item">Plugins</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/services/" class="dropdown-item">Services</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/stacks/" class="dropdown-item">Stacks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/tasks/" class="dropdown-item">Tasks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/volumes/" class="dropdown-item">Volumes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../user_guide/docker_run/" class="dropdown-item">docker.run() guide</a>
+</li>
+                                    
+<li>
+    <a href="../../user_guide/generic_resources/" class="dropdown-item">Swarm generic resources</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../docker_client/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../compose/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#bake" class="nav-link">bake</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#build" class="nav-link">build</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#create" class="nav-link">create</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#disk_usage" class="nav-link">disk_usage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#inspect" class="nav-link">inspect</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#list" class="nav-link">list</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#prune" class="nav-link">prune</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#remove" class="nav-link">remove</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#stop" class="nav-link">stop</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#use" class="nav-link">use</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#version" class="nav-link">version</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#inspect_1" class="nav-link">inspect</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="bake">bake</h2>
+<pre><code class="python">docker.buildx.bake(
+    targets=[],
+    builder=None,
+    files=[],
+    load=False,
+    cache=True,
+    print=False,
+    progress=&quot;auto&quot;,
+    pull=False,
+    push=False,
+    set={},
+    variables={},
+)
+</code></pre>
+
+<p>Bake is similar to make, it allows you to build things declared in a file.</p>
+<p>For example it allows you to build multiple docker image in parallel.</p>
+<p>The CLI docs is <a href="https://github.com/docker/buildx#buildx-bake-options-target">here</a>
+and it contains a lot more information.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>targets</strong> <code>Union[str, List[str]]</code>: Targets or groups of targets to build.</li>
+<li><strong>builder</strong> <code>Optional[Union[str, python_on_whales.Builder]]</code>: The builder to use.</li>
+<li><strong>files</strong> <code>Union[str, pathlib.Path, List[Union[str, pathlib.Path]]]</code>: Build definition file(s)</li>
+<li><strong>load</strong> <code>bool</code>: Shorthand for <code>set=["*.output=type=docker"]</code></li>
+<li><strong>cache</strong> <code>bool</code>: Whether to use the cache or not.</li>
+<li><strong>print</strong> <code>bool</code>: Do nothing, just returns the config.</li>
+<li><strong>progress</strong> <code>Union[str, bool]</code>: Set type of progress output (<code>"auto"</code>, <code>"plain"</code>, <code>"tty"</code>,
+    or <code>False</code>). Use plain to keep the container output on screen</li>
+<li><strong>pull</strong> <code>bool</code>: Always try to pull the newer version of the image</li>
+<li><strong>push</strong> <code>bool</code>: Shorthand for <code>set=["*.output=type=registry"]</code></li>
+<li><strong>set</strong> <code>Dict[str, str]</code>: A list of overrides in the form <code>"targetpattern.key=value"</code>.</li>
+<li><strong>variables</strong> <code>Dict[str, str]</code>: A dict containing the values of the variables defined in the
+    hcl file. See <a href="https://github.com/docker/buildx#hcl-variables-and-functions">https://github.com/docker/buildx#hcl-variables-and-functions</a></li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>The configuration used for the bake (files merged + override with
+the arguments used in the function). It's the loaded json you would
+obtain by running <code>docker buildx bake --print --load my_target</code> if
+your command was <code>docker buildx bake --load my_target</code>. Some example here.</p>
+<pre><code class="python">from python_on_whales import docker
+
+# returns the config used and runs the builds
+config = docker.buildx.bake([&quot;my_target1&quot;, &quot;my_target2&quot;], load=True)
+assert config == {
+    &quot;target&quot;: {
+        &quot;my_target1&quot;: {
+            &quot;context&quot;: &quot;./&quot;,
+            &quot;dockerfile&quot;: &quot;Dockerfile&quot;,
+            &quot;tags&quot;: [&quot;pretty_image1:1.0.0&quot;],
+            &quot;target&quot;: &quot;out1&quot;,
+            &quot;output&quot;: [&quot;type=docker&quot;]
+        },
+        &quot;my_target2&quot;: {
+            &quot;context&quot;: &quot;./&quot;,
+            &quot;dockerfile&quot;: &quot;Dockerfile&quot;,
+            &quot;tags&quot;: [&quot;pretty_image2:1.0.0&quot;],
+            &quot;target&quot;: &quot;out2&quot;,
+            &quot;output&quot;: [&quot;type=docker&quot;]
+        }
+    }
+}
+
+# returns the config only, doesn't run the builds
+config = docker.buildx.bake([&quot;my_target1&quot;, &quot;my_target2&quot;], load=True, print=True)
+</code></pre>
+
+<hr />
+<h2 id="build">build</h2>
+<pre><code class="python">docker.buildx.build(
+    context_path,
+    add_hosts={},
+    allow=[],
+    build_args={},
+    builder=None,
+    cache=True,
+    cache_from=None,
+    cache_to=None,
+    file=None,
+    labels={},
+    load=False,
+    network=None,
+    output={},
+    platforms=None,
+    progress=&quot;auto&quot;,
+    pull=False,
+    push=False,
+    secrets=[],
+    ssh=None,
+    tags=[],
+    target=None,
+)
+</code></pre>
+
+<p>Build a Docker image with builkit as backend.</p>
+<p>Alias: <code>docker.build(...)</code></p>
+<p>A <code>python_on_whales.Image</code> is returned, even when using multiple tags.
+That is because it will produce a single image with multiple tags.
+If no image is loaded into the Docker daemon (if <code>push=True</code> for ex),
+then <code>None</code> is returned.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>context_path</strong> <code>Union[str, pathlib.Path]</code>: The path of the build context.</li>
+<li><strong>add_hosts</strong> <code>Dict[str, str]</code>: Hosts to add. <code>add_hosts={"my_host1": "192.168.32.35"}</code></li>
+<li><strong>allow</strong> <code>List[str]</code>: List of extra privileges.
+    Eg <code>allow=["network.host", "security.insecure"]</code></li>
+<li><strong>build_args</strong> <code>Dict[str, str]</code>: The build arguments.
+    ex <code>build_args={"PY_VERSION": "3.7.8", "UBUNTU_VERSION": "20.04"}</code>.</li>
+<li><strong>builder</strong> <code>Optional[Union[str, python_on_whales.Builder]]</code>: Specify which builder to use.</li>
+<li><strong>cache</strong> <code>bool</code>: Whether or not to use the cache</li>
+<li><strong>cache_from</strong> <code>Optional[Union[str, Dict[str, str]]]</code>: Works only with the container driver. Loads the cache
+    (if needed) from a registry <code>cache_from="user/app:cache"</code>  or
+    a directory on the client <code>cache_from="type=local,src=path/to/dir"</code>.
+    It's also possible to use a dict form for this argument. e.g.
+    <code>cache_from=dict(type="local", src="path/to/dir")</code></li>
+<li><strong>cache_to</strong> <code>Optional[Union[str, Dict[str, str]]]</code>: Works only with the container driver. Sends the resulting
+    docker cache either to a registry <code>cache_to="user/app:cache"</code>,
+    or to a local directory <code>cache_to="type=local,dest=path/to/dir"</code>.
+    It's also possible to use a dict form for this argument. e.g.
+    <code>cache_to=dict(type="local", dest="path/to/dir", mode="max")</code></li>
+<li><strong>file</strong> <code>Optional[Union[str, pathlib.Path]]</code>: The path of the Dockerfile</li>
+<li><strong>labels</strong> <code>Dict[str, str]</code>: Dict of labels to add to the image.
+    <code>labels={"very-secure": "1", "needs-gpu": "0"}</code> for example.</li>
+<li><strong>load</strong> <code>bool</code>: Shortcut for <code>output=dict(type="docker")</code> If <code>True</code>,
+    <code>docker.buildx.build</code> will return a <code>python_on_whales.Image</code>.</li>
+<li><strong>network</strong> <code>Optional[str]</code>: which network to use when building the Docker image</li>
+<li><strong>output</strong> <code>Dict[str, str]</code>: Output destination
+    (format: <code>output={"type": "local", "dest": "path"}</code>
+    Possible output types are
+    <code>["local", "tar", "oci", "docker", "image", "registry"]</code>.
+    See <a href="https://github.com/docker/buildx#-o---outputpath-typetypekeyvalue">this link</a>
+    for more details about each exporter.</li>
+<li><strong>platforms</strong> <code>Optional[List[str]]</code>: List of target platforms when building the image. Ex:
+    <code>platforms=["linux/amd64", "linux/arm64"]</code></li>
+<li><strong>progress</strong> <code>Union[str, bool]</code>: Set type of progress output (auto, plain, tty, or False).
+    Use plain to keep the container output on screen</li>
+<li><strong>pull</strong> <code>bool</code>: Always attempt to pull a newer version of the image</li>
+<li><strong>push</strong> <code>bool</code>: Shorthand for <code>output=dict(type="registry")</code>.</li>
+<li><strong>secrets</strong> <code>Union[str, List[str]]</code>: One or more secrets passed as string(s). For example
+    <code>secrets="id=aws,src=/home/my_user/.aws/credentials"</code></li>
+<li><strong>ssh</strong> <code>Optional[str]</code>: SSH agent socket or keys to expose to the build
+    (format is <code>default|&lt;id&gt;[=&lt;socket&gt;|&lt;key&gt;[,&lt;key&gt;]]</code> as a string)</li>
+<li><strong>tags</strong> <code>Union[str, List[str]]</code>: Tag or tags to put on the resulting image.</li>
+<li><strong>target</strong> <code>Optional[str]</code>: Set the target build stage to build.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A <code>python_on_whales.Image</code> if a Docker image is loaded
+in the daemon after the build (the default behavior when
+calling <code>docker.build(...)</code>). Otherwise, <code>None</code>.</p>
+<hr />
+<h2 id="create">create</h2>
+<pre><code class="python">docker.buildx.create(
+    context_or_endpoint=None,
+    buildkitd_flags=None,
+    config=None,
+    driver=None,
+    driver_options={},
+    name=None,
+    use=False,
+)
+</code></pre>
+
+<p>Create a new builder instance</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>context_or_endpoint</strong> <code>Optional[str]</code>:</li>
+<li><strong>buildkitd_flags</strong> <code>Optional[str]</code>: Flags for buildkitd daemon</li>
+<li><strong>config</strong> <code>Optional[Union[str, pathlib.Path]]</code>: BuildKit config file</li>
+<li><strong>driver</strong> <code>Optional[str]</code>: Driver to use (available: [kubernetes docker docker-container])</li>
+<li><strong>driver_options</strong> <code>Dict[str, str]</code>: Options for the driver.
+    e.g <code>driver_options=dict(network="host")</code></li>
+<li><strong>name</strong> <code>Optional[str]</code>: Builder instance name</li>
+<li><strong>use</strong> <code>bool</code>: Set the current builder instance to this builder</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A <code>python_on_whales.Builder</code> object.</p>
+<hr />
+<h2 id="disk_usage">disk_usage</h2>
+<pre><code class="python">docker.buildx.disk_usage()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h2 id="inspect">inspect</h2>
+<pre><code class="python">docker.buildx.inspect(x=None)
+</code></pre>
+
+<p>Returns a builder instance from the name.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>x</strong> <code>Optional[str]</code>: If <code>None</code> (the default), returns the current builder. If a string is provided,
+    the builder that has this name is returned.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A <code>python_on_whales.Builder</code> object.</p>
+<hr />
+<h2 id="list">list</h2>
+<pre><code class="python">docker.buildx.list()
+</code></pre>
+
+<p>Returns the list of <code>python_on_whales.Builder</code> available.</p>
+<hr />
+<h2 id="prune">prune</h2>
+<pre><code class="python">docker.buildx.prune(all=False, filters={})
+</code></pre>
+
+<p>Remove build cache on the current builder.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>all</strong> <code>bool</code>: Remove all cache, not just dangling layers</li>
+<li><strong>filters</strong> <code>Dict[str, str]</code>: Filters to use, for example <code>filters=dict(until="24h")</code></li>
+</ul>
+<hr />
+<h2 id="remove">remove</h2>
+<pre><code class="python">docker.buildx.remove(builder)
+</code></pre>
+
+<p>Remove a builder</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>builder</strong> <code>Union[python_on_whales.Builder, str]</code>: The builder to remove</li>
+</ul>
+<hr />
+<h2 id="stop">stop</h2>
+<pre><code class="python">docker.buildx.stop(builder)
+</code></pre>
+
+<p>Stop the builder instance</p>
+<p><strong>Arguments:</strong></p>
+<p>builder: The builder to stop. If <code>None</code> (the default value),
+    the current builder is stopped.</p>
+<hr />
+<h2 id="use">use</h2>
+<pre><code class="python">docker.buildx.use(builder, default=False, global_=False)
+</code></pre>
+
+<p>Set the current builder instance</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>builder</strong> <code>Union[python_on_whales.Builder, str]</code>: The builder to use</li>
+<li><strong>default</strong> <code>bool</code>: Set builder as default for the current context</li>
+<li>__global___ <code>bool</code>: Builder will be used even when changing contexts</li>
+</ul>
+<hr />
+<h2 id="version">version</h2>
+<pre><code class="python">docker.buildx.version()
+</code></pre>
+
+<p>Returns the docker buildx version as a string.</p>
+<pre><code class="python">from python_on_whales import docker
+
+version = docker.buildx.version()
+print(version)
+# &quot;github.com/docker/buildx v0.4.2 fb7b670b764764dc4716df3eba07ffdae4cc47b2&quot;
+</code></pre>
+
+<hr />
+<h2 id="inspect_1">inspect</h2>
+<pre><code class="python">docker.buildx.imagetools.inspect(name)
+</code></pre>
+
+<p>Returns the manifest of a Docker image in a registry without pulling it</p>
+<hr /></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>docker plugin - Python on whales</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Python on whales</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../docker_client/" class="nav-link">Docker client</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sub-commands <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../buildx/" class="dropdown-item">docker buildx</a>
+</li>
+                                    
+<li>
+    <a href="../compose/" class="dropdown-item">docker compose</a>
+</li>
+                                    
+<li>
+    <a href="../config/" class="dropdown-item">docker config</a>
+</li>
+                                    
+<li>
+    <a href="../container/" class="dropdown-item">docker container</a>
+</li>
+                                    
+<li>
+    <a href="../context/" class="dropdown-item">docker context</a>
+</li>
+                                    
+<li>
+    <a href="../image/" class="dropdown-item">docker image</a>
+</li>
+                                    
+<li>
+    <a href="../manifest/" class="dropdown-item">docker manifest</a>
+</li>
+                                    
+<li>
+    <a href="../network/" class="dropdown-item">docker network</a>
+</li>
+                                    
+<li>
+    <a href="../node/" class="dropdown-item">docker node</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">docker plugin</a>
+</li>
+                                    
+<li>
+    <a href="../secret/" class="dropdown-item">docker secret</a>
+</li>
+                                    
+<li>
+    <a href="../service/" class="dropdown-item">docker service</a>
+</li>
+                                    
+<li>
+    <a href="../stack/" class="dropdown-item">docker stack</a>
+</li>
+                                    
+<li>
+    <a href="../swarm/" class="dropdown-item">docker swarm</a>
+</li>
+                                    
+<li>
+    <a href="../system/" class="dropdown-item">docker system</a>
+</li>
+                                    
+<li>
+    <a href="../task/" class="dropdown-item">docker task</a>
+</li>
+                                    
+<li>
+    <a href="../trust/" class="dropdown-item">docker trust</a>
+</li>
+                                    
+<li>
+    <a href="../volume/" class="dropdown-item">docker volume</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Docker objects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../docker_objects/builders/" class="dropdown-item">Builders</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/configs/" class="dropdown-item">Configs</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/containers/" class="dropdown-item">Containers</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/networks/" class="dropdown-item">Networks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/nodes/" class="dropdown-item">Nodes</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/plugins/" class="dropdown-item">Plugins</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/services/" class="dropdown-item">Services</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/stacks/" class="dropdown-item">Stacks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/tasks/" class="dropdown-item">Tasks</a>
+</li>
+                                    
+<li>
+    <a href="../../docker_objects/volumes/" class="dropdown-item">Volumes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../user_guide/docker_run/" class="dropdown-item">docker.run() guide</a>
+</li>
+                                    
+<li>
+    <a href="../../user_guide/generic_resources/" class="dropdown-item">Swarm generic resources</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../node/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../secret/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#create" class="nav-link">create</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#disable" class="nav-link">disable</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#enable" class="nav-link">enable</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#inspect" class="nav-link">inspect</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#install" class="nav-link">install</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#list" class="nav-link">list</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#push" class="nav-link">push</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#remove" class="nav-link">remove</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#set" class="nav-link">set</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#upgrade" class="nav-link">upgrade</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="create">create</h2>
+<pre><code class="python">docker.plugin.create(plugin_name, plugin_data_directory, compress=False)
+</code></pre>
+
+<p>Create a plugin from a rootfs and configuration.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>plugin_name</strong> <code>str</code>: The name you want to give to your plugin</li>
+<li><strong>plugin_data_directory</strong> <code>Union[str, pathlib.Path]</code>: Must contain config.json and rootfs directory.</li>
+<li><strong>compress</strong> <code>bool</code>: Compress the context using gzip</li>
+</ul>
+<hr />
+<h2 id="disable">disable</h2>
+<pre><code class="python">docker.plugin.disable(plugin, force=False)
+</code></pre>
+
+<p>Disable a plugin</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>plugin</strong> <code>Union[python_on_whales.Plugin, str]</code>: The plugin to disable</li>
+<li><strong>force</strong> <code>bool</code>: Force the disable of an active plugin</li>
+</ul>
+<hr />
+<h2 id="enable">enable</h2>
+<pre><code class="python">docker.plugin.enable(plugin, timeout=None)
+</code></pre>
+
+<p>Enable a plugin</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>plugin</strong> <code>Union[python_on_whales.Plugin, str]</code>: The plugin to enable</li>
+<li><strong>timeout</strong> <code>Optional[int]</code>: HTTP client timeout (in seconds) (default 30)</li>
+</ul>
+<hr />
+<h2 id="inspect">inspect</h2>
+<pre><code class="python">docker.plugin.inspect(x)
+</code></pre>
+
+<p>Returns a <code>python_on_whales.Plugin</code> object from a string
+(name or id of the plugin)</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>x</strong> <code>Union[str, List[str]]</code>: One id or hostname or a list of name or ids</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>One or a list of <code>python_on_whales.Plugin</code></p>
+<hr />
+<h2 id="install">install</h2>
+<pre><code class="python">docker.plugin.install(plugin_name, configuration={}, alias=None, disable=False, disable_content_trust=True)
+</code></pre>
+
+<p>Installs a Docker plugin</p>
+<p>Warning: <code>--grant-all-permissions</code> is enabled, which means the program won't
+stop to ask you to grant the permissions.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>plugin_name</strong> <code>str</code>: The name of the plugin you want to install</li>
+<li><strong>configuration</strong> <code>Dict[str, str]</code>: A <code>dict</code> adding configuration options to the plugin</li>
+<li><strong>alias</strong> <code>Optional[str]</code>: Local name for plugin</li>
+<li><strong>disable</strong> <code>bool</code>: Do not enable the plugin on install</li>
+<li><strong>disable_content_trust</strong> <code>bool</code>: Skip image verification (default <code>True</code>)</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>A <code>python_on_whales.Plugin</code>.</p>
+<hr />
+<h2 id="list">list</h2>
+<pre><code class="python">docker.plugin.list()
+</code></pre>
+
+<p>Returns a <code>List[python_on_whales.Plugin</code> that are installed on the daemon.</p>
+<hr />
+<h2 id="push">push</h2>
+<pre><code class="python">docker.plugin.push(plugin, disable_content_trust=True)
+</code></pre>
+
+<p>Push a plugin to a registry.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>plugin</strong> <code>Union[python_on_whales.Plugin, str]</code>: The plugin to push</li>
+<li><strong>disable_content_trust</strong> <code>bool</code>: Skip image signing (default <code>True</code>)</li>
+</ul>
+<hr />
+<h2 id="remove">remove</h2>
+<pre><code class="python">docker.plugin.remove(x, force=False)
+</code></pre>
+
+<p>Removes one or more plugins</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>plugin</strong>: One or more plugins to remove.</li>
+<li><strong>force</strong> <code>bool</code>: Force the removal of this plugin.</li>
+</ul>
+<hr />
+<h2 id="set">set</h2>
+<pre><code class="python">docker.plugin.set(plugin, configuration)
+</code></pre>
+
+<p>Change the settings for a plugin</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>plugin</strong> <code>Union[python_on_whales.Plugin, str]</code>: The plugin that needs its settings changed</li>
+<li><strong>configuration</strong> <code>Dict[str, str]</code>: The new configuration options.</li>
+</ul>
+<hr />
+<h2 id="upgrade">upgrade</h2>
+<pre><code class="python">docker.plugin.upgrade(plugin, remote=None, disable_content_trust=True, skip_remote_check=False)
+</code></pre>
+
+<p>Upgrade a plugin</p>
+<p>Warning: <code>--grant-all-permissions</code> is enabled, which means the program won't
+stop to ask you to grant the permissions.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>plugin</strong> <code>Union[python_on_whales.Plugin, str]</code>: The plugin to upgrade</li>
+<li><strong>remote</strong> <code>Optional[str]</code>: The remote to fetch the upgrade from</li>
+<li><strong>disable_content_trust</strong> <code>bool</code>: Skip image verification (default <code>True</code>)</li>
+<li><strong>skip_remote_check</strong> <code>bool</code>: Do not check if specified remote plugin matches
+    existing plugin image</li>
+</ul>
+<hr /></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

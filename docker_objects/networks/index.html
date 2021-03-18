@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Networks - Python on whales</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Python on whales</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../docker_client/" class="nav-link">Docker client</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sub-commands <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../sub-commands/buildx/" class="dropdown-item">docker buildx</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/compose/" class="dropdown-item">docker compose</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/config/" class="dropdown-item">docker config</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/container/" class="dropdown-item">docker container</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/context/" class="dropdown-item">docker context</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/image/" class="dropdown-item">docker image</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/manifest/" class="dropdown-item">docker manifest</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/network/" class="dropdown-item">docker network</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/node/" class="dropdown-item">docker node</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/plugin/" class="dropdown-item">docker plugin</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/secret/" class="dropdown-item">docker secret</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/service/" class="dropdown-item">docker service</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/stack/" class="dropdown-item">docker stack</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/swarm/" class="dropdown-item">docker swarm</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/system/" class="dropdown-item">docker system</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/task/" class="dropdown-item">docker task</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/trust/" class="dropdown-item">docker trust</a>
+</li>
+                                    
+<li>
+    <a href="../../sub-commands/volume/" class="dropdown-item">docker volume</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Docker objects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../builders/" class="dropdown-item">Builders</a>
+</li>
+                                    
+<li>
+    <a href="../configs/" class="dropdown-item">Configs</a>
+</li>
+                                    
+<li>
+    <a href="../containers/" class="dropdown-item">Containers</a>
+</li>
+                                    
+<li>
+    <a href="../images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Networks</a>
+</li>
+                                    
+<li>
+    <a href="../nodes/" class="dropdown-item">Nodes</a>
+</li>
+                                    
+<li>
+    <a href="../plugins/" class="dropdown-item">Plugins</a>
+</li>
+                                    
+<li>
+    <a href="../services/" class="dropdown-item">Services</a>
+</li>
+                                    
+<li>
+    <a href="../stacks/" class="dropdown-item">Stacks</a>
+</li>
+                                    
+<li>
+    <a href="../tasks/" class="dropdown-item">Tasks</a>
+</li>
+                                    
+<li>
+    <a href="../volumes/" class="dropdown-item">Volumes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../user_guide/docker_run/" class="dropdown-item">docker.run() guide</a>
+</li>
+                                    
+<li>
+    <a href="../../user_guide/generic_resources/" class="dropdown-item">Swarm generic resources</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../images/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../nodes/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#docker-networks" class="nav-link">Docker networks</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#attributes" class="nav-link">Attributes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#methods" class="nav-link">Methods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#reload" class="nav-link">reload</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#remove" class="nav-link">remove</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="docker-networks">Docker networks</h1>
+<p>Don't use the constructor directly. Instead use </p>
+<pre><code class="python">from python_on_whales import docker
+
+my_network = docker.network.create(&quot;some-network&quot;)
+
+my_network = docker.container.inspect(&quot;some-network&quot;)
+</code></pre>
+
+<p>For type hints, use this</p>
+<pre><code class="python">from python_on_whales import Network, docker
+
+def ping_hostname_in_network(my_network: Network):
+    docker.run(&quot;busybox&quot;, [&quot;ping&quot;, &quot;-c&quot;, &quot;10&quot;, &quot;my_hostname&quot;], networks=[my_network])
+</code></pre>
+
+<h2 id="attributes">Attributes</h2>
+<p>It attributes are the same that you get with the command line:
+<code>docker network inspect ...</code></p>
+<p>If you want to know the exact structure, you can go to the 
+<a href="https://docs.docker.com/engine/api/v1.40/#operation/NetworkInspect"><code>docker network inspect</code> reference page</a>
+and click on "200 no error".
+An example is worth many lines of descriptions.</p>
+<pre><code>In [1]: from python_on_whales import docker
+
+In [2]: network = docker.network.create(&quot;my-network&quot;)
+
+In [3]: container = docker.run(
+            &quot;ubuntu&quot;, [&quot;sleep&quot;, &quot;infinity&quot;], name=&quot;my_ubuntu&quot;, detach=True, networks=[network]
+        )
+
+In [4]: def super_print(obj):
+   ...:     print(f&quot;type={type(obj)}, value={obj}&quot;)
+   ...:
+
+In [5]: super_print(network.name)
+type = &lt;class 'str'&gt;, value = my-network
+
+In [6]: super_print(network.id)
+type = &lt;class 'str'&gt;, value = 8c3667ed422fb8e5a819f9b6b727816f75570b3c2dc32ab3a75d523f6489168d
+
+In [7]: super_print(network.created)
+type = &lt;class 'datetime.datetime'&gt;, value = 2021-03-18 15:48:03.856495+00:00
+
+In [8]: super_print(network.scope)
+type = &lt;class 'str'&gt;, value = local
+
+In [9]: super_print(network.driver)
+type = &lt;class 'str'&gt;, value = bridge
+
+In [10]: super_print(network.enable_ipv6)
+type = &lt;class 'bool'&gt;, value = False
+
+In [11]: super_print(network.ipam.driver)
+type = &lt;class 'str'&gt;, value = default
+
+In [12]: super_print(network.ipam.config)
+type = &lt;class 'list'&gt;, value = [{'Subnet': '172.19.0.0/16', 'Gateway': '172.19.0.1'}]
+
+In [13]: super_print(network.ipam.options)
+type = &lt;class 'dict'&gt;, value = {}
+
+In [14]: super_print(network.internal)
+type = &lt;class 'bool'&gt;, value = False
+
+In [15]: super_print(network.attachable)
+type = &lt;class 'bool'&gt;, value = False
+
+In [16]: super_print(network.ingress)
+type = &lt;class 'bool'&gt;, value = False
+
+In [17]: super_print(network.containers)
+type = &lt;class 'dict'&gt;, value = {'290f22bafe9dc581129352f7fd55ecf97c9ccb618df1a6f3e87aa97428202a42': NetworkContainer(name='my_ubuntu', endpoint_id='9c446c45def993963ce3ed753ecba6fe371791afe74902a01c5679eaa7fc379d', mac_address='02:42:ac:13:00:02', ipv4_address='172.19.0.2/16', ipv6_address='')}
+
+In [18]: super_print(network.options)
+type = &lt;class 'dict'&gt;, value = {}
+
+In [19]: super_print(network.labels)
+type = &lt;class 'dict'&gt;, value = {}
+
+In [20]: super_print(network.config_from)
+type = &lt;class 'dict'&gt;, value = {'Network': ''}
+
+In [21]: super_print(network.config_only)
+type = &lt;class 'bool'&gt;, value = False
+
+</code></pre>
+
+<h2 id="methods">Methods</h2>
+<h2 id="reload">reload</h2>
+<pre><code class="python">Network.reload()
+</code></pre>
+
+<hr />
+<h2 id="remove">remove</h2>
+<pre><code class="python">Network.remove()
+</code></pre>
+
+<p>Removes this Docker network.</p>
+<p>Rather than removing it manually, you can use a context manager to
+make sure the network is deleted even if an exception is raised.</p>
+<pre><code class="python">from python_on_whales import docker
+
+with docker.network.create(&quot;some_name&quot;) as my_net:
+    docker.run(
+        &quot;busybox&quot;,
+        [&quot;ping&quot;, &quot;idonotexistatall.com&quot;],
+        networks=[my_net],
+        remove=True,
+    )
+    # an exception will be raised because the container will fail
+    # but the network will be removed anyway.
+</code></pre>
+
+<hr /></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

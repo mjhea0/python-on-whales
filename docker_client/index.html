@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Docker client - Python on whales</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python on whales</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Docker client</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sub-commands <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../sub-commands/buildx/" class="dropdown-item">docker buildx</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/compose/" class="dropdown-item">docker compose</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/config/" class="dropdown-item">docker config</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/container/" class="dropdown-item">docker container</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/context/" class="dropdown-item">docker context</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/image/" class="dropdown-item">docker image</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/manifest/" class="dropdown-item">docker manifest</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/network/" class="dropdown-item">docker network</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/node/" class="dropdown-item">docker node</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/plugin/" class="dropdown-item">docker plugin</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/secret/" class="dropdown-item">docker secret</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/service/" class="dropdown-item">docker service</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/stack/" class="dropdown-item">docker stack</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/swarm/" class="dropdown-item">docker swarm</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/system/" class="dropdown-item">docker system</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/task/" class="dropdown-item">docker task</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/trust/" class="dropdown-item">docker trust</a>
+</li>
+                                    
+<li>
+    <a href="../sub-commands/volume/" class="dropdown-item">docker volume</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Docker objects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../docker_objects/builders/" class="dropdown-item">Builders</a>
+</li>
+                                    
+<li>
+    <a href="../docker_objects/configs/" class="dropdown-item">Configs</a>
+</li>
+                                    
+<li>
+    <a href="../docker_objects/containers/" class="dropdown-item">Containers</a>
+</li>
+                                    
+<li>
+    <a href="../docker_objects/images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="../docker_objects/networks/" class="dropdown-item">Networks</a>
+</li>
+                                    
+<li>
+    <a href="../docker_objects/nodes/" class="dropdown-item">Nodes</a>
+</li>
+                                    
+<li>
+    <a href="../docker_objects/plugins/" class="dropdown-item">Plugins</a>
+</li>
+                                    
+<li>
+    <a href="../docker_objects/services/" class="dropdown-item">Services</a>
+</li>
+                                    
+<li>
+    <a href="../docker_objects/stacks/" class="dropdown-item">Stacks</a>
+</li>
+                                    
+<li>
+    <a href="../docker_objects/tasks/" class="dropdown-item">Tasks</a>
+</li>
+                                    
+<li>
+    <a href="../docker_objects/volumes/" class="dropdown-item">Volumes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User guide <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../user_guide/docker_run/" class="dropdown-item">docker.run() guide</a>
+</li>
+                                    
+<li>
+    <a href="../user_guide/generic_resources/" class="dropdown-item">Swarm generic resources</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../sub-commands/buildx/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#the-docker-client-object" class="nav-link">The Docker client object</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#dockerclient" class="nav-link">DockerClient</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#login" class="nav-link">login</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#login_ecr" class="nav-link">login_ecr</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#logout" class="nav-link">logout</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version" class="nav-link">version</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#sub-commands" class="nav-link">Sub-commands</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#other-commands" class="nav-link">Other commands</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#about-multithreading-and-multiprocessing" class="nav-link">About multithreading and multiprocessing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#the-docker-cli" class="nav-link">The Docker CLI</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="the-docker-client-object">The Docker client object</h1>
+<h2 id="dockerclient">DockerClient</h2>
+<pre><code class="python">python_on_whales.DockerClient(
+    config=None,
+    context=None,
+    debug=None,
+    host=None,
+    log_level=None,
+    tls=None,
+    tlscacert=None,
+    tlscert=None,
+    tlskey=None,
+    tlsverify=None,
+    client_config=None,
+    compose_files=[],
+)
+</code></pre>
+
+<p>Creates a Docker client</p>
+<p>Note that</p>
+<pre><code class="python">from python_on_whales import docker
+print(docker.run(&quot;hello-world&quot;))
+</code></pre>
+
+<p>is equivalent to</p>
+<pre><code class="python">from python_on_whales import DockerClient
+docker = DockerClient()
+print(docker.run(&quot;hello-world&quot;)
+</code></pre>
+
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>config</strong> <code>Optional[Union[str, pathlib.Path]]</code>: Location of client config files (default "~/.docker")</li>
+<li><strong>context</strong> <code>Optional[str]</code>: Name of the context to use to connect to the
+    daemon (overrides DOCKER_HOST env var
+    and default context set with "docker context use")</li>
+<li><strong>debug</strong> <code>Optional[bool]</code>: Enable debug mode</li>
+<li><strong>host</strong> <code>Optional[str]</code>: Daemon socket(s) to connect to</li>
+<li><strong>log_level</strong> <code>Optional[str]</code>: Set the logging level ("debug"|"info"|"warn"|"error"|"fatal")
+   (default "info")</li>
+<li><strong>tls</strong> <code>Optional[bool]</code>:  Use TLS; implied by <code>tlsverify</code></li>
+<li><strong>tlscacert</strong> <code>Optional[Union[str, pathlib.Path]]</code>: Trust certs signed only by this CA (default "~/.docker/ca.pem")</li>
+</ul>
+<hr />
+<h2 id="login">login</h2>
+<pre><code class="python">docker.login(server=None, username=None, password=None)
+</code></pre>
+
+<p>Log in to a Docker registry.</p>
+<p>If no server is specified, the default is defined by the daemon.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>server</strong> <code>Optional[str]</code>: The server to log into. For example, with a self-hosted registry
+    it might be something like <code>server="192.168.0.10:5000"</code></li>
+<li><strong>username</strong> <code>Optional[str]</code>: The username</li>
+<li><strong>password</strong> <code>Optional[str]</code>: The password</li>
+</ul>
+<hr />
+<h2 id="login_ecr">login_ecr</h2>
+<pre><code class="python">docker.login_ecr(aws_access_key_id=None, aws_secret_access_key=None, region_name=None)
+</code></pre>
+
+<p>Login to the aws ECR registry. If the credentials are not provided as
+arguments, they are taken from the environment variables as defined
+in <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html">the aws docs</a>.</p>
+<p>Those are <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code>, <code>AWS_DEFAULT_REGION</code>.</p>
+<hr />
+<h2 id="logout">logout</h2>
+<pre><code class="python">docker.logout(server=None)
+</code></pre>
+
+<p>Logout from a Docker registry</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>server</strong> <code>Optional[str]</code>: The server to logout from. For example, with a self-hosted registry
+    it might be something like <code>server="192.168.0.10:5000"</code></li>
+</ul>
+<hr />
+<h2 id="version">version</h2>
+<pre><code class="python">docker.version()
+</code></pre>
+
+<p>Not yet implemented</p>
+<hr />
+<h1 id="sub-commands">Sub-commands</h1>
+<ul>
+<li><a href="../sub-commands/buildx/"><code>docker.buildx</code></a></li>
+<li><a href="../sub-commands/compose/"><code>docker.compose</code></a></li>
+<li><a href="../sub-commands/config/"><code>docker.config</code></a></li>
+<li><a href="../sub-commands/container/"><code>docker.container</code></a></li>
+<li><a href="../sub-commands/context/"><code>docker.context</code></a></li>
+<li><a href="../sub-commands/image/"><code>docker.image</code></a></li>
+<li><a href="../sub-commands/manifest/"><code>docker.manifest</code></a></li>
+<li><a href="../sub-commands/network/"><code>docker.network</code></a></li>
+<li><a href="../sub-commands/node/"><code>docker.node</code></a></li>
+<li><a href="../sub-commands/secret/"><code>docker.secret</code></a></li>
+<li><a href="../sub-commands/service/"><code>docker.service</code></a></li>
+<li><a href="../sub-commands/stack/"><code>docker.stack</code></a></li>
+<li><a href="../sub-commands/swarm/"><code>docker.swarm</code></a></li>
+<li><a href="../sub-commands/system/"><code>docker.system</code></a></li>
+<li><a href="../sub-commands/trust/"><code>docker.trust</code></a></li>
+<li><a href="../sub-commands/volume/"><code>docker.volume</code></a></li>
+</ul>
+<h1 id="other-commands">Other commands</h1>
+<p>They're actually aliases</p>
+<ul>
+<li><a href="../sub-commands/buildx/#build"><code>docker.build</code></a></li>
+<li><a href="../sub-commands/container/#commit"><code>docker.commit</code></a></li>
+<li><a href="../sub-commands/container/#copy"><code>docker.copy</code></a></li>
+<li><a href="../sub-commands/container/#create"><code>docker.create</code></a></li>
+<li><a href="../sub-commands/container/#diff"><code>docker.diff</code></a></li>
+<li><a href="../sub-commands/container/#execute"><code>docker.execute</code></a></li>
+<li><a href="../sub-commands/container/#export"><code>docker.export</code></a></li>
+<li><a href="../sub-commands/image/#list"><code>docker.images</code></a></li>
+<li><a href="../sub-commands/image/#import_"><code>docker.import_</code></a></li>
+<li><a href="../sub-commands/system/#info"><code>docker.info</code></a></li>
+<li><a href="../sub-commands/container/#kill"><code>docker.kill</code></a></li>
+<li><a href="../sub-commands/image/#load"><code>docker.load</code></a></li>
+<li><a href="../sub-commands/container/#logs"><code>docker.logs</code></a></li>
+<li><a href="../sub-commands/container/#pause"><code>docker.pause</code></a></li>
+<li><a href="../sub-commands/container/#list"><code>docker.ps</code></a></li>
+<li><a href="../sub-commands/image/#pull"><code>docker.pull</code></a></li>
+<li><a href="../sub-commands/image/#push"><code>docker.push</code></a></li>
+<li><a href="../sub-commands/container/#rename"><code>docker.rename</code></a></li>
+<li><a href="../sub-commands/container/#restart"><code>docker.restart</code></a></li>
+<li><a href="../sub-commands/container/#remove"><code>docker.remove</code></a></li>
+<li><a href="../sub-commands/container/#run"><code>docker.run</code></a></li>
+<li><a href="../sub-commands/image/#save"><code>docker.save</code></a></li>
+<li><a href="../sub-commands/container/#start"><code>docker.start</code></a></li>
+<li><a href="../sub-commands/container/#stats"><code>docker.stats</code></a></li>
+<li><a href="../sub-commands/container/#stop"><code>docker.stop</code></a></li>
+<li><a href="../sub-commands/image/#tag"><code>docker.tag</code></a></li>
+<li><a href="../sub-commands/container/#stop"><code>docker.top</code></a></li>
+<li><a href="../sub-commands/container/#unpause"><code>docker.unpause</code></a></li>
+<li><a href="../sub-commands/container/#update"><code>docker.update</code></a></li>
+<li><a href="../sub-commands/container/#wait"><code>docker.wait</code></a></li>
+</ul>
+<h1 id="about-multithreading-and-multiprocessing">About multithreading and multiprocessing</h1>
+<p>Behind the scenes, Python on whales calls the Docker command line interface with
+subprocess. The Python on whales client does not store any intermediate state so it's safe 
+to use with multithreading. </p>
+<p>The Docker objects store some intermediate states (the attributes 
+that you would normally get with <code>docker ... inspect</code>but no logic in 
+the codebase depends on those attributes. They're just here so that users can look at them. 
+So you can share them between process/threads and pickle containers, images, networks...</p>
+<p>The Docker daemon works with its own objects internally and handles concurrent and conflicting requests. 
+For example, if you create two containers with the same name from different threads, only one will 
+succeed. If you pull the same docker image from multiple processes/threads, the Docker daemon will 
+only pull the image and layers once.</p>
+<p>Just be careful with some scenario similar to this one</p>
+<pre><code>Thread 1: my_container = docker.run(..., detach=True)
+...
+# my_container finishes
+...
+Thread 2: docker.container.prune()
+...
+Thread 1: docker.logs(my_container)  # will fail because the container was removed by thread 2
+</code></pre>
+
+<p>In the end, unless you use this type of logic in your code, 
+Python-on-whales is safe to use with multithreading and multiprocessing.</p>
+<h1 id="the-docker-cli">The Docker CLI</h1>
+<p>Python-on-whales needs the Docker CLI to work (unlike docker-py).
+Most of the time, users already have the CLI installed on their machines. It's possible to 
+verify that the CLI is there by doing <code>docker --help</code> in the command line.</p>
+<p>Sometimes, the CLI might not be available on the system, it can happen if you want to control
+Docker from within a container with <code>-v /var/run/docker.sock:/var/run/docker.sock</code>, or if you
+want to connect to a remote daemon with the <code>host</code> argument.</p>
+<p>In this case, when using python-on-whales, the CLI will be downloaded automatically 
+(it's a single binary), and will be put in </p>
+<pre><code class="python">pathlib.Path.home() / &quot;.cache/python-on-whales/docker&quot;
+</code></pre>
+
+<p>Since it's not in the PATH and was not downloaded with the package manager, it's only seen and 
+used by python-on-whales.</p>
+<p>If you want to trigger the download manually (to avoid downloading the CLI at runtime),
+you can run from your shell:</p>
+<pre><code class="bash">python-on-whales download-cli
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
